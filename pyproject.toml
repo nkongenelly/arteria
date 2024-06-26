@@ -16,3 +16,6 @@ pytest = "^8.2.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+arteria-runfolder = "arteria.services.arteria_runfolder:main"
