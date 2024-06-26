@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "arteria"
+version = "0.1.0"
+description = ""
+authors = ["SNP&SEQ Technology Platform <dataoperations@medsci.uu.se>"]
+license = "LICENCE"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+aiohttp = "^3.9.5"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
