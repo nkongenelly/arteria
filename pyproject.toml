@@ -12,6 +12,7 @@ aiohttp = "^3.9.5"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"
+pytest-aiohttp = "^1.0.5"
 
 [build-system]
 requires = ["poetry-core"]
