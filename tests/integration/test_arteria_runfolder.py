@@ -1,9 +1,9 @@
-import importlib.metadata
 from pathlib import Path
 import tempfile
 
 import pytest
 
+from arteria import __version__
 from arteria.services.arteria_runfolder import get_app
 
 
@@ -40,10 +40,9 @@ def runfolder(request, config):
                 "reagent_kit_barcode": "MS6728155 - 600V3",
         },
         "path": f"{config['monitored_directories'][0]}/200624_A00834_0183_BHMTFYDRXX",
-        "service_version": importlib.metadata.version("arteria"),
+        "service_version": __version__,
         "state": state,
     }
-
 
 
 @pytest.fixture()
@@ -59,7 +58,7 @@ async def test_version(client):
         assert resp.status == 200
         content = await resp.json()
 
-    assert content == {"version": importlib.metadata.version("arteria")}
+    assert content == {"version": __version__}
 
 
 @pytest.mark.parametrize("runfolder", [{"state": "ready"}], indirect=True)
@@ -97,11 +96,13 @@ async def test_post_runfolders_path_missing_runfolder(client, config, runfolder)
         assert resp.status == 404
         assert resp.text == "Runfolder '200624_A00834_0183_FAKE_RUNFOLDER' does not exist"
 
+
 @pytest.mark.parametrize("runfolder", [{"state": "ready"}], indirect=True)
 async def test_get_runfolder_path(client, config, runfolder):
-    async  with client.request("GET", "/runfolders/path/200624_A00834_0183_BHMTFYDRXX") as resp:
+    async with client.request("GET", "/runfolders/path/200624_A00834_0183_BHMTFYDRXX") as resp:
         assert resp.status == 200
         assert resp.json() == runfolder
+
 
 @pytest.mark.parametrize("runfolder", [{"state": "ready"}], indirect=True)
 async def test_get_runfolders_path_missing_runfolder(client, config, runfolder):
