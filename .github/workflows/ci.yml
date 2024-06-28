@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: poetry install
       - name: Run tests
-        run: poetry run pytest
+        run: poetry run pytest --cov=arteria
       - name: Check PEP8 compliance
         run: poetry run flake8 arteria/ tests/
       - name: Lint code

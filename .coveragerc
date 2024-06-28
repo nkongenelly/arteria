@@ -1,0 +1,6 @@
+[run]
+source = arteria
+omit = */tests/*
+
+[report]
+include = arteria/*
