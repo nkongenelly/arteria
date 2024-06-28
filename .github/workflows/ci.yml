@@ -18,7 +18,11 @@ jobs:
       - name: Install dependencies
         run: poetry install
       - name: Run tests
-        run: poetry run pytest --cov=arteria
+        run: poetry run pytest --cov=arteria --cov-report=xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
       - name: Check PEP8 compliance
         run: poetry run flake8 arteria/ tests/
       - name: Lint code
