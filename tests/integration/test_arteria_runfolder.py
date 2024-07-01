@@ -61,3 +61,27 @@ async def test_post_runfolders_path_missing_runfolder(aiohttp_client, config):
 
         assert resp.status == 404
         assert resp.text == "Runfolder '200624_A00834_0183_FAKE_RUNFOLDER' does not exist"
+
+async def test_get_runfolder_path(aiohttp_client, config):
+    client = await aiohttp_client(get_app(config))
+    async  with client.request("GET", "/runfolders/path/200624_A00834_0183_BHMTFYDRXX") as resp:
+        assert resp.status == 200
+        assert resp.json() == {
+            "host": "test-host",
+            "link": "http://test-host/api/1.0/runfolders/path/200624_A00834_0183_BHMTFYDRXX",
+            "metadata": {
+                    "reagent_kit_barcode": "MS6728155 - 600V3",
+            },
+            "path": f"{config['monitored_directories'][0]}/200624_A00834_0183_BHMTFYDRXX",
+            "service_version": importlib.metadata.version("arteria"),
+            "state": "started"
+        }
+
+async def test_get_runfolders_path_missing_runfolder(aiohttp_client, config):
+    client = await aiohttp_client(get_app(config))
+    async with client.request(
+            "GET",
+            "/runfolders/path/200624_A00834_0183_FAKE_RUNFOLDER") as resp:
+
+        assert resp.status == 404
+        assert resp.text == "Runfolder '200624_A00834_0183_FAKE_RUNFOLDER' does not exist"
