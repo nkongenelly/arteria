@@ -30,7 +30,7 @@ def runfolder(request, config):
     monitored_dir = config["monitored_directories"][0]
     runfolder = Path(monitored_dir) / "200624_A00834_0183_BHMTFYDRXX"
     (runfolder / ".arteria").mkdir(parents=True)
-    with open(runfolder / ".arteria/state", "w") as state_file:
+    with open(runfolder / ".arteria/state", "w", encoding="utf-8") as state_file:
         state_file.write(state)
 
     return {
@@ -71,7 +71,7 @@ async def test_post_runfolders_path(client, config, runfolder):
 
         state = Path(config["monitored_directories"][0]) / ".arteria/state"
 
-        with open(state) as state_file:
+        with open(state, encoding="utf-8") as state_file:
             assert state_file.read() == "started"
 
 
@@ -137,7 +137,7 @@ async def test_runfolders_pickup(client, config, runfolder):
         assert resp.json()["state"] == "pending"
         state = Path(config["monitored_directories"][0]) / ".arteria/state"
 
-        with open(state) as state_file:
+        with open(state, encoding="utf-8") as state_file:
             assert state_file.read() == "pending"
 
 

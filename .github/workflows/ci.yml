@@ -22,6 +22,8 @@ jobs:
       - name: Check PEP8 compliance
         run: poetry run flake8 arteria/ tests/
       - name: Lint code
-        run: poetry run pylint -E arteria/ tests/
+        run: poetry run pylint arteria/ --rcfile=arteria/.pylintrc
+      - name: Lint tests
+        run: poetry run pylint tests --rcfile=tests/.pylintrc
       - name: Build package
         run: poetry build
