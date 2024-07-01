@@ -18,13 +18,8 @@ def config():
         }
 
 
-@pytest.fixture()
-async def client(config, aiohttp_client):
-    app = get_app(config)
-    return await aiohttp_client(app)
-
-
-async def test_version(client):
+async def test_version(aiohttp_client, config):
+    client = await aiohttp_client(get_app(config))
     async with client.request("GET", "/version") as resp:
         assert resp.status == 200
         content = await resp.json()
@@ -32,7 +27,8 @@ async def test_version(client):
     assert content == {"version": importlib.metadata.version("arteria")}
 
 
-async def test_post_runfolders_path(client, config):
+async def test_post_runfolders_path(aiohttp_client, config):
+    client = await aiohttp_client(get_app(config))
     async with client.request(
             "POST",
             "/runfolders/path/200624_A00834_0183_BHMTFYDRXX",
@@ -45,7 +41,8 @@ async def test_post_runfolders_path(client, config):
             assert state_file.read() == "started"
 
 
-async def test_post_runfolders_path_invalid_state(client):
+async def test_post_runfolders_path_invalid_state(aiohttp_client, config):
+    client = await aiohttp_client(get_app(config))
     async with client.request(
             "POST",
             "/runfolders/path/200624_A00834_0183_BHMTFYDRXX",
@@ -55,7 +52,8 @@ async def test_post_runfolders_path_invalid_state(client):
         assert resp.text == "The state 'INVALID' is not valid"
 
 
-async def test_post_runfolders_path_missing_runfolder(client):
+async def test_post_runfolders_path_missing_runfolder(aiohttp_client, config):
+    client = await aiohttp_client(get_app(config))
     async with client.request(
             "POST",
             "/runfolders/path/200624_A00834_0183_FAKE_RUNFOLDER",
