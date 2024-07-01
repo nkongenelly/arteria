@@ -164,3 +164,12 @@ async def test_runfolders_pickup(aiohttp_client, config_runfolder_started):
     async with client.request("GET", "/runfolders/pickup") as resp:
         assert resp.status == 204
         assert resp.text == "No ready runfolders available."
+
+
+async def test_get_runfolders(aiohttp_client, config_runfolder_ready):
+    config, runfolder = config_runfolder_ready
+    client = await aiohttp_client(get_app(config))
+    async  with client.request("GET", "/runfolders/path/200624_A00834_0183_BHMTFYDRXX") as resp:
+        assert resp.status == 200
+        assert resp.json() == {"runfolders": [runfolder]}
+
