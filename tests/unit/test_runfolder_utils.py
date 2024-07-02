@@ -85,8 +85,8 @@ class TestRunfolder():
         "runfolder,metadata",
         [
             ("RunParameters_MiSeq.xml", {"reagent_kit_barcode": "MS6728155-600V3"}),
-            ("RunParameters_NS6000.xml", {"reagent_kit_barcode": "NV0217945-LIB"}),
-            ("RunParameters_NSXp.xml", {"reagent_kit_barcode": "LC1025031-LC1"}),
+            ("RunParameters_NS6000.xml", {"library_tube_barcode": "NV0217945-LIB"}),
+            ("RunParameters_NSXp.xml", {"library_tube_barcode": "LC1025031-LC1"}),
         ],
         indirect=["runfolder"],
     )
