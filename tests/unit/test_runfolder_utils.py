@@ -14,10 +14,11 @@ def monitored_directory():
             runfolder_path = Path(monitored_dir) / f"runfolder{i}"
             runfolder_path.mkdir()
             (runfolder_path / "CopyComplete.txt").touch()
+
             if i == 0:
                 (runfolder_path / ".arteria").mkdir()
-                with open(runfolder_path / ".arteria/state", "w", encoding="utf-8") as state_file:
-                    state_file.write("started")
+                (runfolder_path / ".arteria/state").write_text("started")
+
         (Path(monitored_dir) / "regular_folder").mkdir()
 
         yield monitored_directory
@@ -31,8 +32,7 @@ def runfolder(request):
         (runfolder_path / "CopyComplete.txt").touch()
 
         (runfolder_path / ".arteria").mkdir()
-        with open(runfolder_path / ".arteria/state", "w", encoding="utf-8") as state_file:
-            state_file.write("started")
+        (runfolder_path / ".arteria/state").write_text("started")
 
         if hasattr(request, "param"):
             run_parameters_file = request.param
