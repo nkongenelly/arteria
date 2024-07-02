@@ -2,7 +2,9 @@ def list_runfolders(path, filter_key=lambda r: True):
     return []
 
 class Runfolder:
-    pass
+    def __init__(self, path):
+        pass
 
 class Instrument:
-    pass
+    def __init__(self, run_params_file):
+        pass

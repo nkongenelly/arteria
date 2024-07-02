@@ -1,4 +1,5 @@
 from pathlib import Path
+import shutil
 import tempfile
 
 import pytest
@@ -17,21 +18,28 @@ def monitored_directory():
                 (runfolder_path / ".arteria").mkdir()
                 with open(runfolder_path / ".arteria/state", "w", encoding="utf-8") as state_file:
                     state_file.write("started")
-                
-                
         (Path(monitored_dir) / "regular_folder").mkdir()
 
         yield monitored_directory
 
 
 @pytest.fixture()
-def runfolder():
+def runfolder(request):
     with tempfile.TemporaryDirectory(suffix="RUNFOLDER") as runfolder_path:
         runfolder_path = Path(runfolder_path)
+
         (runfolder_path / "CopyComplete.txt").touch()
+
         (runfolder_path / ".arteria").mkdir()
         with open(runfolder_path / ".arteria/state", "w", encoding="utf-8") as state_file:
             state_file.write("started")
+
+        if hasattr(request, "param"):
+            run_parameters_file = request.param
+            shutil.copyfile(
+                f"tests/resources/{run_parameters_file}",
+                Path(runfolder_path) / "RunParameters.xml",
+            )
 
         yield Runfolder(runfolder_path)
 
@@ -68,8 +76,18 @@ class TestRunfolder():
     def get_path(self, runfolder):
         assert runfolder.path.endswith("RUNFOLDER")
 
-    def test_get_metadata(self):
-        assert False
+    @pytest.mark.parametrize(
+        "runfolder,metadata",
+        [
+            ("RunParameters_MiSeq.xml", {"reagent_kit_barcode": "MS6728155-600V3"}),
+            ("RunParameters_NS6000.xml", {"reagent_kit_barcode": "NV0217945-LIB"}),
+            ("RunParameters_NSXp.xml", {}),
+        ],
+        indirect=["runfolder"],
+    )
+    def test_get_metadata(self, runfolder, metadata):
+        assert runfolder.metadata == metadata
+
 
 class TestInstrument():
     def test_get_marker_file(self):
