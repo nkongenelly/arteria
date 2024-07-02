@@ -24,6 +24,18 @@ def monitored_directory():
         yield monitored_directory
 
 
+@pytest.fixture()
+def runfolder():
+    with tempfile.TemporaryDirectory(suffix="RUNFOLDER") as runfolder_path:
+        runfolder_path = Path(runfolder_path)
+        (runfolder_path / "CopyComplete.txt").touch()
+        (runfolder_path / ".arteria").mkdir()
+        with open(runfolder_path / ".arteria/state", "w", encoding="utf-8") as state_file:
+            state_file.write("started")
+
+        yield Runfolder(runfolder_path)
+
+
 def test_list_runfolders(monitored_directory):
     runfolders = list_runfolders(monitored_directory)
 
@@ -43,14 +55,15 @@ def test_list_runfolders_filtered(monitored_directory):
 
 
 class TestRunfolder():
-    def test_get_state(self):
-        assert False
+    def test_get_state(self, runfolder):
+        assert runfolder.state == "started"
 
-    def test_set_state(self):
-        assert False
+    def test_set_state(self, runfolder):
+        runfolder.state = "done"
+        assert runfolder.state == "done"
 
-    def get_path(self):
-        assert False
+    def get_path(self, runfolder):
+        assert runfolder.path.endswith("RUNFOLDER")
 
     def test_get_metadata(self):
         assert False
