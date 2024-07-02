@@ -5,6 +5,7 @@ import tempfile
 import pytest
 
 from arteria.models.runfolder_utils import list_runfolders, Runfolder, Instrument
+from arteria.models.state import State
 
 
 @pytest.fixture()
@@ -17,7 +18,7 @@ def monitored_directory():
 
             if i == 0:
                 (runfolder_path / ".arteria").mkdir()
-                (runfolder_path / ".arteria/state").write_text("started")
+                (runfolder_path / ".arteria/state").write_text(State.STARTED.name)
 
         (Path(monitored_dir) / "regular_folder").mkdir()
 
@@ -32,7 +33,7 @@ def runfolder(request):
         (runfolder_path / "CopyComplete.txt").touch()
 
         (runfolder_path / ".arteria").mkdir()
-        (runfolder_path / ".arteria/state").write_text("started")
+        (runfolder_path / ".arteria/state").write_text(State.STARTED.value)
 
         if hasattr(request, "param"):
             run_parameters_file = request.param
@@ -57,12 +58,12 @@ def test_list_runfolders(monitored_directory):
 def test_list_runfolders_filtered(monitored_directory):
     runfolder = list_runfolders(
         monitored_directory,
-        filter_key=lambda r: r.state == "started"
+        filter_key=lambda r: r.state == State.STARTED
     )
 
     assert len(runfolder) == 1
     assert runfolder[0].path == f"{monitored_directory}/runfolder0"
-    assert runfolder[0].state == "started"
+    assert runfolder[0].state == State.STARTED
 
 
 class TestRunfolder():
@@ -72,11 +73,11 @@ class TestRunfolder():
                 Runfolder(regular_folder)
 
     def test_get_state(self, runfolder):
-        assert runfolder.state == "started"
+        assert runfolder.state == State.STARTED
 
     def test_set_state(self, runfolder):
-        runfolder.state = "done"
-        assert runfolder.state == "done"
+        runfolder.state = State.DONE
+        assert runfolder.state == State.DONE
 
     def get_path(self, runfolder):
         assert runfolder.path.endswith("RUNFOLDER")
