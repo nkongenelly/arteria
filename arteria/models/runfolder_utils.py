@@ -1,5 +1,5 @@
-def list_runfolders(path):
-    pass
+def list_runfolders(path, filter_key=lambda r: True):
+    return []
 
 class Runfolder:
     pass
