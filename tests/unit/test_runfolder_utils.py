@@ -1,7 +1,7 @@
 from pathlib import Path
+import tempfile
 
 import pytest
-import tempfile
 
 from arteria.models.runfolder_utils import list_runfolders, Runfolder, Instrument
 
@@ -41,16 +41,19 @@ def test_list_runfolders(monitored_directory):
 
     assert len(runfolders) == 3
     assert all(
-        runfolder.path == f"{monitored_dir}/runfolder{i}"
+        runfolder.path == f"{monitored_directory}/runfolder{i}"
         for i, runfolder in enumerate(sorted(runfolders, key=lambda r: r.path))
     )
 
 
 def test_list_runfolders_filtered(monitored_directory):
-    runfolder = list_runfolders(monitored_directory, filter_key=lambda r: r.state == "started")
+    runfolder = list_runfolders(
+        monitored_directory,
+        filter_key=lambda r: r.state == "started"
+    )
 
     assert len(runfolder) == 1
-    assert runfolder[0].path == f"{monitored_dir}/runfolder0"
+    assert runfolder[0].path == f"{monitored_directory}/runfolder0"
     assert runfolder[0].state == "started"
 
 
