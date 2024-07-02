@@ -66,6 +66,11 @@ def test_list_runfolders_filtered(monitored_directory):
 
 
 class TestRunfolder():
+    def test_init_regular_folder(self):
+        with pytest.raises(ValueError):
+            with tempfile.TemporaryDirectory() as regular_folder:
+                Runfolder(regular_folder)
+
     def test_get_state(self, runfolder):
         assert runfolder.state == "started"
 
