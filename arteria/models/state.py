@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class State(Enum):
     NONE = "none"
     READY = "ready"
