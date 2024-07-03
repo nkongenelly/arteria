@@ -51,6 +51,7 @@ class Runfolder():
         except StopIteration as exc:
             raise AssertionError(f"File [Rr]unParameters.xml not found in runfolder {path}") from exc
 
+
         marker_file_name = Instrument(self.run_parameters).completed_marker_file
         marker_file = (self.path / marker_file_name)
 
