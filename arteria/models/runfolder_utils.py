@@ -46,8 +46,10 @@ class Runfolder():
         except StopIteration as e:
             raise AssertionError(f"File [Rr]unParameters.xml not found in runfolder {path}")
 
+
         marker_file_name = Instrument(self.run_parameters).completed_marker_file
         marker_file = (self.path / marker_file_name)
+
         assert (
                 marker_file.exists()
                 and time.time() - os.path.getmtime(marker_file) > grace_minutes * 60

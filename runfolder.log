@@ -1,0 +1,252 @@
+2024-07-19 21:45:59,205 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/handlers/base.py", line 24, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/models/runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 21:45:59,512 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/handlers/base.py", line 24, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/models/runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 21:45:59,583 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/handlers/base.py", line 24, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/models/runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:04:49,364 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:04:49,701 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:04:49,753 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:09:32,165 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:09:32,313 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:12:03,783 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:12:03,823 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:28:02,380 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/handlers/base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/models/runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:28:02,503 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/handlers/base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/models/runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:28:28,163 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/handlers/base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/models/runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:28:28,234 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/handlers/base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/models/runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:29:11,077 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/handlers/base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/models/runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:29:11,245 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/handlers/base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/models/runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:29:46,559 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/handlers/base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/models/runfolder_utils.py", line 44, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:29:46,698 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nelly/.pyenv/versions/3.12.2/envs/arteria/lib/python3.12/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/handlers/base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/e/nellyFolder/work/arteria/arteria/models/runfolder_utils.py", line 44, in __init__
+    assert self.path.is_dir()
+AssertionError

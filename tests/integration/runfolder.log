@@ -1,0 +1,2154 @@
+2024-07-19 21:51:35,564 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 24, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 21:58:06,232 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 22:06:05,508 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 24, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 22:07:01,292 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:01:37,497 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 25, in post_runfolders_path
+    runfolder_cls = Runfolder(request.match_info["runfolder"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-19 23:43:22,208 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 26, in post_runfolders_path
+    runfolder_path = Config().get("monitored_directories")[0]/request.match_info["runfolder"]
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-07-19 23:48:47,466 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 27, in post_runfolders_path
+    runfolder_path = config.get("monitored_directories")[0]/request.match_info["runfolder"]
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+2024-07-19 23:53:39,874 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 27, in post_runfolders_path
+    runfolder_path = config.get("monitored_directories")[0]/request.match_info["runfolder"]
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+2024-07-19 23:58:23,858 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 46, in __init__
+    run_parameter_file = next(
+                         ^^^^^
+StopIteration
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 29, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 56, in __init__
+    raise AssertionError("File [Rr]unParameters.xml not found in runfolder {path}") from exc
+AssertionError: File [Rr]unParameters.xml not found in runfolder {path}
+2024-07-20 00:01:09,784 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 46, in __init__
+    run_parameter_file = next(
+                         ^^^^^
+StopIteration
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 29, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 56, in __init__
+    raise AssertionError("File [Rr]unParameters.xml not found in runfolder {path}") from exc
+AssertionError: File [Rr]unParameters.xml not found in runfolder {path}
+2024-07-20 00:04:37,360 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 46, in __init__
+    run_parameter_file = next(
+                         ^^^^^
+StopIteration
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 56, in __init__
+    raise AssertionError("File [Rr]unParameters.xml not found in runfolder {path}") from exc
+AssertionError: File [Rr]unParameters.xml not found in runfolder {path}
+2024-07-20 00:24:20,145 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 44, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-20 00:25:44,862 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path.abspath())
+                              ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'abspath'
+2024-07-20 00:26:21,448 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 31, in post_runfolders_path
+    )).abspath()
+       ^^^^^^^
+AttributeError: 'str' object has no attribute 'abspath'
+2024-07-20 00:27:34,298 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 46, in __init__
+    run_parameter_file = next(
+                         ^^^^^
+StopIteration
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 56, in __init__
+    raise AssertionError("File [Rr]unParameters.xml not found in runfolder {path}") from exc
+AssertionError: File [Rr]unParameters.xml not found in runfolder {path}
+2024-07-20 00:32:07,340 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 61, in __init__
+    assert (
+AssertionError
+2024-07-20 00:34:02,730 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 61, in __init__
+    assert (
+AssertionError
+2024-07-20 00:37:33,344 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 61, in __init__
+    assert (
+AssertionError
+2024-07-20 00:40:28,030 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 61, in __init__
+    assert (
+AssertionError
+2024-07-20 00:47:01,629 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 61, in __init__
+    assert (
+AssertionError
+2024-07-20 00:47:32,578 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 34, in post_runfolders_path
+    data = await request.json()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_request.py", line 686, in json
+    return loads(body)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-07-20 00:48:00,460 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 34, in post_runfolders_path
+    data = await request.json()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_request.py", line 686, in json
+    return loads(body)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-07-20 00:53:12,034 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 34, in post_runfolders_path
+    data = await request.json()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_request.py", line 686, in json
+    return loads(body)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-07-20 00:58:07,704 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 34, in post_runfolders_path
+    data = await request.json()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_request.py", line 686, in json
+    return loads(body)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-07-20 01:04:00,742 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    a = data["state"]
+        ~~~~^^^^^^^^^
+TypeError: byte indices must be integers or slices, not str
+2024-07-20 01:05:15,868 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    a = data_json["state"]
+        ~~~~~~~~~^^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+2024-07-20 01:05:50,861 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 34, in post_runfolders_path
+    data = await request.json()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_request.py", line 686, in json
+    return loads(body)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-07-20 01:16:15,292 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 35, in post_runfolders_path
+    runfolder_cls.state(data["state"])
+TypeError: 'State' object is not callable
+2024-07-20 01:19:12,610 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 35, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State
+AssertionError
+2024-07-20 01:19:32,716 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 35, in post_runfolders_path
+    runfolder_cls.state = data["state"].lower()
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 81, in state
+    self._state_file.write_text(new_state.value)
+                                ^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'value'
+2024-07-20 01:21:02,462 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 35, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State
+AssertionError
+2024-07-20 01:53:32,267 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 61, in __init__
+    assert (
+AssertionError
+2024-07-20 01:54:38,184 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 61, in __init__
+    assert (
+AssertionError
+2024-07-20 01:55:32,131 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 61, in __init__
+    assert (
+AssertionError
+2024-07-20 02:00:56,966 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 62, in __init__
+    c = os.path.exists()
+        ^^^^^^^^^^^^^^^^
+TypeError: _path_exists() missing required argument 'path' (pos 1)
+2024-07-20 02:02:02,937 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 63, in __init__
+    assert (
+AssertionError
+2024-07-20 02:04:35,057 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 66, in __init__
+    assert (
+AssertionError
+2024-07-20 02:23:49,902 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 70, in __init__
+    assert (
+AssertionError
+2024-07-20 02:47:06,586 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 33, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 81, in state
+    assert new_state in State.__members__
+AssertionError
+2024-07-20 02:54:08,650 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 44, in get_runfolders_path
+    return web.json_response(runfolder_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Runfolder is not JSON serializable
+2024-07-20 03:04:15,342 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 51, in get_next_runfolder
+    list_runfolders(
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 31, in list_runfolders
+    for subdir in os.listdir(monitored_directory)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C'
+2024-07-22 18:00:42,878 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 35, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__
+AssertionError
+2024-07-22 18:08:53,320 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 35, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__
+AssertionError
+2024-07-22 18:12:47,230 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 35, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+2024-07-22 18:18:15,052 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 35, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+2024-07-22 18:18:52,479 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 35, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+2024-07-22 18:19:49,529 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 35, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+2024-07-22 18:21:36,501 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 35, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+2024-07-22 18:25:49,251 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 35, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+2024-07-22 18:37:05,141 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 35, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+2024-07-22 18:41:14,458 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 40, in post_runfolders_path
+    data={'message': e.message},
+                     ^^^^^^^^^
+AttributeError: 'AssertionError' object has no attribute 'message'
+2024-07-22 18:46:49,755 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 40, in post_runfolders_path
+    data={'message': e},
+                     ^^^^
+AttributeError: 'AssertionError' object has no attribute 'message'
+2024-07-22 18:47:35,710 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 39, in post_runfolders_path
+    return web.json_response(
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type AssertionError is not JSON serializable
+2024-07-22 18:52:52,901 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 39, in post_runfolders_path
+    return web.json_response(
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type AssertionError is not JSON serializable
+2024-07-22 18:53:50,696 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 39, in post_runfolders_path
+    return web.json_response(
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type AssertionError is not JSON serializable
+2024-07-22 18:59:21,405 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 39, in post_runfolders_path
+    return web.json_response(
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type AssertionError is not JSON serializable
+2024-07-22 19:00:06,915 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 39, in post_runfolders_path
+    return web.json_response(
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type AssertionError is not JSON serializable
+2024-07-22 19:00:20,345 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 39, in post_runfolders_path
+    return web.json_response(
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type AssertionError is not JSON serializable
+2024-07-22 19:01:05,955 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 39, in post_runfolders_path
+    return web.json_response(
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type AssertionError is not JSON serializable
+2024-07-22 19:02:07,095 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 39, in post_runfolders_path
+    return web.json_response(
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type AssertionError is not JSON serializable
+2024-07-22 19:03:53,115 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 39, in post_runfolders_path
+    a = e[0]
+        ~^^^
+TypeError: 'AssertionError' object is not subscriptable
+2024-07-22 19:05:57,947 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 39, in post_runfolders_path
+    a = 'status' in e
+        ^^^^^^^^^^^^^
+TypeError: argument of type 'AssertionError' is not iterable
+2024-07-22 19:07:43,125 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 39, in post_runfolders_path
+    a = 'status' in e
+        ^^^^^^^^^^^^^
+TypeError: argument of type 'AssertionError' is not iterable
+2024-07-22 19:21:11,554 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 39, in post_runfolders_path
+    a = 'status' in e
+        ^^^^^^^^^^^^^
+TypeError: argument of type 'AssertionError' is not iterable
+2024-07-22 19:22:27,628 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 39, in post_runfolders_path
+    a = 'status' in e
+        ^^^^^^^^^^^^^
+TypeError: argument of type 'AssertionError' is not iterable
+2024-07-22 19:23:34,365 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 80, in state
+    assert new_state in State.__members__, f"The state '{new_state}' is not valid"
+AssertionError: The state 'INVALID' is not valid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 39, in post_runfolders_path
+    a = 'status' in e
+        ^^^^^^^^^^^^^
+TypeError: argument of type 'AssertionError' is not iterable
+2024-07-22 19:29:48,474 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 34, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 40, in post_runfolders_path
+    data={"message": e.args[0]},
+                     ~~~~~~^^^
+IndexError: tuple index out of range
+2024-07-22 19:58:30,474 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 34, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 40, in post_runfolders_path
+    data={"message": e.args[0]},
+                     ~~~~~~^^^
+IndexError: tuple index out of range
+2024-07-22 19:59:29,890 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 34, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 40, in post_runfolders_path
+    data={"message": e.args[0]},
+                     ~~~~~~^^^
+IndexError: tuple index out of range
+2024-07-22 19:59:56,020 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 34, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    assert self.path.is_dir()
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 40, in post_runfolders_path
+    data={"message": e.args[0]},
+                     ~~~~~~^^^
+IndexError: tuple index out of range
+2024-07-22 20:04:46,775 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 34, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 44, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-22 20:05:18,141 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 34, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 44, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-22 20:07:43,836 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 34, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 46, in __init__
+    assert self.path.is_dir()
+AssertionError
+2024-07-22 21:05:57,362 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 36, in post_runfolders_path
+    runfolder_cls.state = data["state"]
+    ^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 87, in state
+    self._state_file.write_text(State[new_state].value)
+                                ~~~~~^^^^^^^^^^^
+  File "D:\programs\python312\Lib\enum.py", line 801, in __getitem__
+    return cls._member_map_[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'INVALID'
+2024-07-22 21:09:21,482 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 47, in get_runfolders_path
+    return web.json_response(runfolder_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Runfolder is not JSON serializable
+2024-07-22 21:12:18,884 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 47, in get_runfolders_path
+    return web.json_response(data=runfolder_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Runfolder is not JSON serializable
+2024-07-22 21:26:19,415 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 47, in get_runfolders_path
+    return web.json_response({runfolder_cls})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type set is not JSON serializable
+2024-07-22 21:26:46,608 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 47, in get_runfolders_path
+    return web.json_response(runfolder_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Runfolder is not JSON serializable
+2024-07-22 21:27:35,354 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 47, in get_runfolders_path
+    return web.json_response(runfolder_cls.__dict__)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Config is not JSON serializable
+2024-07-22 21:29:32,654 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 48, in get_runfolders_path
+    return web.json_response(json.dumps(runfolder_cls.__dict__))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Config is not JSON serializable
+2024-07-22 21:34:10,412 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 48, in get_runfolders_path
+    return web.json_response(json.dumps(runfolder_cls.__dict__))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Config is not JSON serializable
+2024-07-22 21:35:54,400 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 48, in get_runfolders_path
+    return web.Response(f"{runfolder_cls}")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Response.__init__() takes 1 positional argument but 2 were given
+2024-07-22 21:52:20,403 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 56, in get_next_runfolder
+    list_runfolders(
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 33, in list_runfolders
+    for subdir in os.listdir(monitored_directory)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C'
+2024-07-22 21:53:53,758 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 56, in get_next_runfolder
+    list_runfolders(
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 33, in list_runfolders
+    for subdir in os.listdir(monitored_directory)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C'
+2024-07-23 18:28:22,176 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 34, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 49, in __init__
+    self.link = f"{link}/runfolders/path{self.path}"
+                   ^^^^
+NameError: name 'link' is not defined
+2024-07-23 19:06:31,694 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 49, in get_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path, link_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 68, in __init__
+    assert (
+AssertionError
+2024-07-23 19:07:48,152 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 49, in get_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path, link_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 68, in __init__
+    assert (
+AssertionError
+2024-07-23 19:14:11,410 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 50, in get_runfolders_path
+    a = runfolder_cls.__repr__()
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 134, in __repr__
+    "path": list(self.path.parts).join(","),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'join'
+2024-07-23 19:23:14,867 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 48, in get_runfolders_path
+    request.host = "test-host"
+    ^^^^^^^^^^^^
+  File "aiohttp\\_helpers.pyx", line 35, in aiohttp._helpers.reify.__set__
+AttributeError: reified property is read-only
+2024-07-23 19:48:06,705 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 61, in get_next_runfolder
+    list_runfolders(
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 33, in list_runfolders
+    for subdir in os.listdir(monitored_directory)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C'
+2024-07-23 20:47:48,253 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 61, in get_next_runfolder
+    data=list_runfolders(
+         ^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 33, in list_runfolders
+    for subdir in os.listdir(monitored_directory)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C'
+2024-07-23 20:51:39,022 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 61, in get_next_runfolder
+    data=list_runfolders(
+         ^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 28, in list_runfolders
+    a=os.listdir(monitored_directory)
+                 ^^^^^^^^^^^^^^^^^^^
+NameError: name 'monitored_directory' is not defined. Did you mean: 'monitored_directories'?
+2024-07-23 20:52:09,128 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 61, in get_next_runfolder
+    data=list_runfolders(
+         ^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 28, in list_runfolders
+    a=os.listdir(monitored_directories[0])
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C'
+2024-07-23 20:52:43,267 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 61, in get_next_runfolder
+    data=list_runfolders(
+         ^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 28, in list_runfolders
+    a=os.listdir(Path(monitored_directories[0]))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C'
+2024-07-23 21:09:54,363 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 60, in get_next_runfolder
+    return  web.json_response(
+            ^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Runfolder is not JSON serializable
+2024-07-23 21:11:04,756 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 61, in get_next_runfolder
+    data=json.loads(list_runfolders(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 339, in loads
+    raise TypeError(f'the JSON object must be str, bytes or bytearray, '
+TypeError: the JSON object must be str, bytes or bytearray, not Runfolder
+2024-07-23 21:11:40,749 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 61, in get_next_runfolder
+    data=json.dumps(list_runfolders(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Runfolder is not JSON serializable
+2024-07-23 21:13:14,160 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 65, in get_next_runfolder
+    data=json.dumps(runfolder_cls.__repr__()),
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type WindowsPath is not JSON serializable
+2024-07-23 21:13:38,697 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 65, in get_next_runfolder
+    data=json.loads(runfolder_cls.__repr__()),
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 339, in loads
+    raise TypeError(f'the JSON object must be str, bytes or bytearray, '
+TypeError: the JSON object must be str, bytes or bytearray, not dict
+2024-07-23 21:14:08,767 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 65, in get_next_runfolder
+    data=json.loads(f"{runfolder_cls.__repr__()}"),
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2024-07-23 21:15:30,001 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 64, in get_next_runfolder
+    return  web.json_response(
+            ^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type WindowsPath is not JSON serializable
+2024-07-23 21:16:29,943 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 53, in get_runfolders_path
+    return web.json_response(
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type WindowsPath is not JSON serializable
+2024-07-23 21:29:37,734 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 59, in get_next_runfolder
+    link_path = f"{request.scheme}://{request_host}/api/1.0"
+                                      ^^^^^^^^^^^^
+NameError: name 'request_host' is not defined
+2024-07-23 22:16:19,045 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 34, in post_runfolders_path
+    runfolder_cls = Runfolder(runfolder_path, link_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    self.host = request.url.raw_host
+                ^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'url'
+2024-07-23 22:35:19,751 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 59, in get_next_runfolder
+    runfolder_cls = list_runfolders(
+                    ^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 33, in list_runfolders
+    if filter_key(Runfolder(os.path.join(monitored_directory, subdir)))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 43, in __init__
+    self.host = request.url.raw_host
+                ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'url'
+2024-07-23 22:36:31,147 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 59, in get_next_runfolder
+    runfolder_cls = list_runfolders(
+                    ^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 33, in list_runfolders
+    if filter_key(Runfolder(os.path.join(monitored_directory, subdir)))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 50, in __init__
+    link = f"{request.scheme}://{self.host}/api/1.0"
+              ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'scheme'
+2024-07-23 22:56:07,015 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 59, in get_next_runfolder
+    runfolder_cls = list_runfolders(
+                    ^^^^^^^^^^^^^^^^
+IndexError: list index out of range
+2024-07-23 23:02:54,150 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 59, in get_next_runfolder
+    runfolder_cls = list_runfolders(
+                    ^^^^^^^^^^^^^^^^
+IndexError: list index out of range
+2024-07-23 23:03:40,199 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 59, in get_next_runfolder
+    runfolder_cls = list_runfolders(
+                    ^^^^^^^^^^^^^^^^
+IndexError: list index out of range
+2024-07-23 23:14:50,232 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 77, in get_pickup_runfolder
+    runfolder_cls = list_runfolders(
+                    ^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 32, in list_runfolders
+    for subdir in os.listdir(monitored_directory)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C'
+2024-07-23 23:15:16,157 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 83, in get_pickup_runfolder
+    runfolder_cls.state = State.PENDING
+    ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'state'
+2024-07-23 23:27:22,441 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 84, in get_pickup_runfolder
+    data=runfolder_cls[0].__repr__(),
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 133, in __repr__
+    "host": self.host,
+            ^^^^^^^^^
+AttributeError: 'Runfolder' object has no attribute 'host'
+2024-07-23 23:28:09,914 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 84, in get_pickup_runfolder
+    data=runfolder_cls[0].__repr__(),
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\models\runfolder_utils.py", line 133, in __repr__
+    "host": self.host,
+            ^^^^^^^^^
+AttributeError: 'Runfolder' object has no attribute 'host'
+2024-07-23 23:51:05,876 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 101, in get_runfolders_path
+    return web.json_response({"runfolders": runfolders})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Runfolder is not JSON serializable
+2024-07-23 23:54:47,484 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 102, in get_runfolders_path
+    return web.json_response({"runfolders": runfolders})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Runfolder is not JSON serializable
+2024-07-23 23:55:33,876 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\arteria\handlers\base.py", line 102, in get_runfolders_path
+    return web.json_response(
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\nellyFolder\work\arteria\venv\Lib\site-packages\aiohttp\web_response.py", line 811, in json_response
+    text = dumps(data)
+           ^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "D:\programs\python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Runfolder is not JSON serializable
