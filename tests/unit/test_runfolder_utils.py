@@ -3,6 +3,7 @@ import shutil
 import tempfile
 
 import pytest
+import unittest.mock as mock
 
 from arteria.models.runfolder_utils import list_runfolders, Runfolder, Instrument
 from arteria.models.state import State
@@ -27,22 +28,27 @@ def monitored_directory():
 
 @pytest.fixture()
 def runfolder(request):
-    with tempfile.TemporaryDirectory(suffix="RUNFOLDER") as runfolder_path:
-        runfolder_path = Path(runfolder_path)
+    with mock.patch("arteria.models.runfolder_utils.Instrument") as instrument:
+        instrument.completed_marker_file = "CopyComplete.txt"
 
-        (runfolder_path / "CopyComplete.txt").touch()
+        with tempfile.TemporaryDirectory(suffix="RUNFOLDER") as runfolder_path:
+            runfolder_path = Path(runfolder_path)
 
-        (runfolder_path / ".arteria").mkdir()
-        (runfolder_path / ".arteria/state").write_text(State.STARTED.value)
+            (runfolder_path / "CopyComplete.txt").touch()
 
-        if hasattr(request, "param"):
-            run_parameters_file = request.param
+            (runfolder_path / ".arteria").mkdir()
+            (runfolder_path / ".arteria/state").write_text(State.STARTED.value)
+
+            if hasattr(request, "param"):
+                run_parameters_file = request.param
+            else:
+                run_parameters_file = "RunParameters_NSXp.xml"
             shutil.copyfile(
                 f"tests/resources/{run_parameters_file}",
                 Path(runfolder_path) / "RunParameters.xml",
             )
 
-        yield Runfolder(runfolder_path)
+            yield Runfolder(runfolder_path)
 
 
 def test_list_runfolders(monitored_directory):
@@ -72,11 +78,9 @@ class TestRunfolder():
             with tempfile.TemporaryDirectory() as regular_folder:
                 Runfolder(regular_folder)
 
-    def test_init_young_runfolder(self):
+    def test_init_young_runfolder(self, runfolder):
         with pytest.raises(AssertionError):
-            with tempfile.TemporaryDirectory() as young_runfolder:
-                (Path(young_runfolder) / "CopyComplete.txt").touch()
-                Runfolder(young_runfolder, grace_minutes=60)
+            Runfolder(runfolder.path, grace_minutes=60)
 
     def test_get_state(self, runfolder):
         assert runfolder.state == State.STARTED

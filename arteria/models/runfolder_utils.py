@@ -19,20 +19,7 @@ class Runfolder():
     def __init__(self, path, grace_minutes=0):
         self.path = Path(path)
 
-        def file_exists_and_is_old(path):
-            return path.exists() and time.time() - os.path.getmtime(path) > grace_minutes * 60
-
         assert self.path.is_dir()
-        assert (
-            file_exists_and_is_old(self.path / "CopyComplete.txt")
-            or file_exists_and_is_old(self.path / "RTAComplete.txt")
-        )
-
-        (self.path / ".arteria").mkdir(exist_ok=True)
-        self._state_file = (self.path / ".arteria/state")
-        if not self._state_file.exists():
-            self._state_file.write_text("ready")
-
         try:
             run_parameter_file = next(
                 path
@@ -44,8 +31,18 @@ class Runfolder():
             )
             self.run_parameters = xmltodict.parse(run_parameter_file.read_text())["RunParameters"]
         except StopIteration:
-            self.run_parameters = {}
-            log.warning(f"File [Rr]unParameters.xml not found in runfolder {path}")
+            raise AssertionError("File [Rr]unParameters.xml not found in runfolder {path}")
+
+        marker_file = Instrument(self.run_parameters).completed_marker_file
+        assert (
+            marker_file.exists()
+            and time.time() - os.path.getmtime(marker_file) > grace_minutes * 60
+        )
+
+        (self.path / ".arteria").mkdir(exist_ok=True)
+        self._state_file = (self.path / ".arteria/state")
+        if not self._state_file.exists():
+            self._state_file.write_text("ready")
 
     @property
     def state(self):
