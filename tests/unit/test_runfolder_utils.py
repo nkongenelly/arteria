@@ -4,8 +4,8 @@ import pytest
 import tempfile
 import xmltodict
 
-from pathlib import Path
-from arteria.models.state import State
+import pytest
+
 from arteria.models.runfolder_utils import list_runfolders, Runfolder, Instrument
 
 
@@ -35,25 +35,20 @@ def monitored_directory():
 def runfolder(request):
     with tempfile.TemporaryDirectory(suffix="RUNFOLDER") as runfolder_path:
         runfolder_path = Path(runfolder_path)
-        complete_marker_file = 'CopyComplete.txt'
 
-        (runfolder_path / ".arteria").mkdir()
-        (runfolder_path / ".arteria/state").write_text(State.STARTED.value)
+        (runfolder_path / "CopyComplete.txt").touch()
+
+            (runfolder_path / ".arteria").mkdir()
+            (runfolder_path / ".arteria/state").write_text(State.STARTED.value)
 
         if hasattr(request, "param"):
             run_parameters_file = request.param
-            if request.param == "RunParameters_MiSeq.xml":
-                complete_marker_file ='RTAComplete.txt'
-        else:
-            run_parameters_file = "RunParameters_NSXp.xml"
+            shutil.copyfile(
+                f"tests/resources/{run_parameters_file}",
+                Path(runfolder_path) / "RunParameters.xml",
+            )
 
-        (runfolder_path / complete_marker_file).touch()
-        shutil.copyfile(
-            f"tests/resources/{run_parameters_file}",
-            Path(runfolder_path) / "RunParameters.xml",
-        )
-
-        yield Runfolder(runfolder_path)
+            yield Runfolder(runfolder_path)
 
 
 def test_list_runfolders(monitored_directory):
