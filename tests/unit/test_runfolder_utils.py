@@ -68,9 +68,15 @@ def test_list_runfolders_filtered(monitored_directory):
 
 class TestRunfolder():
     def test_init_regular_folder(self):
-        with pytest.raises(ValueError):
+        with pytest.raises(AssertionError):
             with tempfile.TemporaryDirectory() as regular_folder:
                 Runfolder(regular_folder)
+
+    def test_init_young_runfolder(self):
+        with pytest.raises(AssertionError):
+            with tempfile.TemporaryDirectory() as young_runfolder:
+                (Path(young_runfolder) / "CopyComplete.txt").touch()
+                Runfolder(young_runfolder, grace_minutes=60)
 
     def test_get_state(self, runfolder):
         assert runfolder.state == State.STARTED

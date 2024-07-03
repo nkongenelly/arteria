@@ -1,5 +1,7 @@
 from pathlib import Path
 import logging
+import os
+import time
 
 import xmltodict
 
@@ -12,14 +14,20 @@ log = logging.getLogger(__name__)
 def list_runfolders(path, filter_key=lambda r: True):
     return []
 
-class Runfolder:
-    def __init__(self, path):
+
+class Runfolder():
+    def __init__(self, path, grace_minutes=0):
         self.path = Path(path)
+
+        def file_exists_and_is_old(path):
+            return path.exists() and time.time() - os.path.getmtime(path) > grace_minutes * 60
+
         assert self.path.is_dir()
         assert (
-            (self.path / "CopyComplete.txt").exists()
-            or (self.path / "RTAComplete.txt").exists()
+            file_exists_and_is_old(self.path / "CopyComplete.txt")
+            or file_exists_and_is_old(self.path / "RTAComplete.txt")
         )
+
         (self.path / ".arteria").mkdir(exist_ok=True)
         self._state_file = (self.path / ".arteria/state")
         if not self._state_file.exists():
