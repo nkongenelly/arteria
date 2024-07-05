@@ -28,7 +28,6 @@ def list_runfolders(monitored_directories, filter_key=lambda r: True):
                 if e == f"File [Rr]unParameters.xml not found in runfolder {subdir}":
                     continue
 
-    return runfolders
 
 class Runfolder():
     """
