@@ -10,7 +10,9 @@ from arteria.models.config import Config
 
 log = logging.getLogger(__name__)
 
-
+DEFAULT_CONFIG = {
+    "completed_marker_grace_minutes": 0,
+}
 def list_runfolders(monitored_directories, filter_key=lambda r: True):
     """
     Returns list of Runfolders in the monitored_directories
