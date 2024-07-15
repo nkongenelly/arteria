@@ -1,7 +1,7 @@
 from pathlib import Path
 import shutil
 import tempfile
-
+import xmltodict
 import pytest
 import unittest.mock as mock
 
@@ -23,7 +23,7 @@ def monitored_directory():
 
         (Path(monitored_dir) / "regular_folder").mkdir()
 
-        yield monitored_directory
+        yield monitored_dir
 
 
 @pytest.fixture()
@@ -109,11 +109,13 @@ class TestInstrument():
     @pytest.mark.parametrize(
         "runparameter_file,marker_file",
         [
-            ("tests/resources/RunParameters_MiSeq.xml", "RTAComplete.txt"),
-            ("tests/resources/RunParameters_NS6000.xml", "CopyComplete.txt"),
-            ("tests/resources/RunParameters_NSXp.xml", "CopyComplete.txt"),
+            ("../resources/RunParameters_MiSeq.xml", "RTAComplete.txt"),
+            ("../resources/RunParameters_NS6000.xml", "CopyComplete.txt"),
+            ("../resources/RunParameters_NSXp.xml", "CopyComplete.txt"),
         ]
     )
     def test_get_marker_file(self, runparameter_file, marker_file):
-        instrument = Instrument(runparameter_file)
+        run_parameter_file = Path(runparameter_file)
+        run_parameters = xmltodict.parse(run_parameter_file.read_text())["RunParameters"]
+        instrument = Instrument(run_parameters)
         assert instrument.completed_marker_file == marker_file

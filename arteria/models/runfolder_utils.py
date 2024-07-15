@@ -2,15 +2,13 @@ from pathlib import Path
 import logging
 import os
 import time
-
+import re
 import xmltodict
 
 from arteria.models.state import State
 
 
 log = logging.getLogger(__name__)
-
-
 def list_runfolders(path, filter_key=lambda r: True):
     return []
 
@@ -84,5 +82,66 @@ class Runfolder():
 
 
 class Instrument:
-    def __init__(self, run_params_file):
-        pass
+    def __init__(self, run_parameters):
+        self.run_parameters = run_parameters
+        self.runparameter_instrument_id_keys = [
+            "InstrumentName", "InstrumentId", "ScannerID",
+            "InstrumentSerialNumber"
+        ]
+
+    @property
+    def completed_marker_file(self):
+        if self.run_parameters:
+            instrument, instrument_keys = self.get_instrument()
+            completed_marker_file = instrument_keys.get("completed_marker_file")
+            return completed_marker_file
+
+
+    def get_instrument(self):
+        instrument_id = self.get_instrument_id()
+        instrument_marker_dict = self.get_instrument_marker_dict()
+        return next(
+            (
+                (instrument, instrument_keys)
+                for instrument, instrument_keys in instrument_marker_dict.items()
+                if re.search(instrument_keys.get('id_pattern'), instrument_id)
+            ),
+            (
+                None, {'completed_marker_file': 'RTAComplete.txt'}
+            )
+        )
+
+
+    def get_instrument_id(self):
+        instrument_id = self.run_parameters.get('Setup', {}).get('ScannerID')
+        if instrument_id is None:
+            instrument_id = next(
+                self.run_parameters.get(key)
+                for key in self.runparameter_instrument_id_keys
+                if key in self.run_parameters.keys()
+            )
+        return instrument_id
+
+    def get_instrument_marker_dict(self):
+        return {
+            "NovaSeq": {
+                'id_pattern': '^A', 'completed_marker_file': 'CopyComplete.txt'
+            },
+            "NovaSeqXPlus": {
+                'id_pattern': '^LH', 'completed_marker_file': 'CopyComplete.txt'
+            },
+            "ISeq": {
+                'id_pattern': '^FS', 'completed_marker_file': 'CopyComplete.txt'
+            },
+            "MiSeq": {
+                'id_pattern': '^M', 'completed_marker_file': 'RTAComplete.txt'
+            },
+            "HiSeq": {
+                'id_pattern': '^D', 'completed_marker_file': 'RTAComplete.txt'
+            },
+            "HiSeqX": {
+                'id_pattern': '^ST-E', 'completed_marker_file': 'RTAComplete.txt'
+            }
+        }
+
+
