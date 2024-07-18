@@ -54,7 +54,8 @@ def runfolder(request):
         runfolder_path = Path(runfolder_path)
         complete_marker_file = 'CopyComplete.txt'
 
-        (runfolder_path / "CopyComplete.txt").touch()
+        (runfolder_path / ".arteria").mkdir()
+        (runfolder_path / ".arteria/state").write_text(State.STARTED.value)
 
         if hasattr(request, "param"):
             run_parameters_file = request.param
