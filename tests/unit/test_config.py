@@ -1,22 +1,26 @@
+import yaml
 import pytest
 import tempfile
-import yaml
+import jsonschema
 
 from arteria.models.config import Config
+from jsonschema.exceptions import ValidationError
+from arteria.config_schemas.schema_arteria_runfolder import runfolder_schema
 
 
 @pytest.fixture()
 def config_dict():
     return {
         "port": 8080,
-        "grace_minutes": 10,
-        "monitored_paths": ["/tmp/path1", "/tmp/path2"],
+        "completed_marker_grace_minutes": 10,
+        "monitored_directories": ["/tmp/path1", "/tmp/path2"],
+        "logger_config_file": "/tmp/path3"
     }
 
 
 @pytest.fixture()
 def config(config_dict):
-    config_object = Config.new(config_dict)
+    config_object = Config.new(config_dict, exist_ok=False, schema=runfolder_schema)
 
     yield config_object
 
@@ -25,13 +29,14 @@ def config(config_dict):
 
 def test_config_from_yaml(config_dict):
     # TODO test `exist_ok`
-    with tempfile.NamedTemporaryFile(mode="r+") as config_file:
+    with tempfile.NamedTemporaryFile(mode="r+", delete=False) as config_file:
         config_file.write(yaml.dump(config_dict))
         config_file.seek(0)
         config = Config.from_yaml(config_file.name)
 
         assert config._config_dict == config_dict
 
+        config_file.close()
         del Config._instance
 
 
@@ -71,8 +76,8 @@ def test_config_new(config, config_dict):
 
     new_config = {"abc": "123"}
 
-    with pytest.raises(AssertionError):
-        Config.new(new_config)
+    with pytest.raises(ValidationError):
+        Config.new(new_config, exist_ok=True, schema=runfolder_schema)
 
     Config.new(new_config, exist_ok=True)
     assert config.to_dict() == new_config
@@ -102,3 +107,21 @@ def test_default_config_from_existing_config(config, config_dict):
 
     config = Config() # issue, still contains default variable
     assert config.to_dict() == config_dict
+
+
+def test_config_validation(config):
+    wrong_config_dict = {"abc": "123"}
+
+    # validate(instance=config_dict, schema=schema if schema else {})
+    validator = jsonschema.Draft7Validator(runfolder_schema)
+
+    errors = [error.message for error in sorted(validator.iter_errors(wrong_config_dict), key=str)]
+    expected_errors = [
+        "'completed_marker_grace_minutes' is a required property",
+        "'logger_config_file' is a required property",
+        "'monitored_directories' is a required property",
+        "'port' is a required property"
+    ]
+
+    assert len(errors) == 4
+    assert errors == expected_errors

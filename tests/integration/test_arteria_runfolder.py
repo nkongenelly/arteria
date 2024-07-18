@@ -1,11 +1,10 @@
-from pathlib import Path
+import pytest
 import tempfile
 
-import pytest
-
+from pathlib import Path
 from arteria import __version__
-from arteria.services.arteria_runfolder import get_app
 from arteria.models.state import State
+from arteria.services.arteria_runfolder import get_app
 
 
 @pytest.fixture()
@@ -16,6 +15,9 @@ def config():
     with tempfile.TemporaryDirectory() as monitored_dir:
         config = {
             "monitored_directories": [monitored_dir],
+            "port": 8080,
+            "completed_marker_grace_minutes": 10,
+            "logger_config_file": "../resources/config/logger.config"
         }
 
         yield config
