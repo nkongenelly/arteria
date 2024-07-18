@@ -1,12 +1,11 @@
-from pathlib import Path
 import shutil
+import pytest
 import tempfile
 import xmltodict
-import pytest
-import unittest.mock as mock
 
-from arteria.models.runfolder_utils import list_runfolders, Runfolder, Instrument
+from pathlib import Path
 from arteria.models.state import State
+from arteria.models.runfolder_utils import list_runfolders, Runfolder, Instrument
 
 
 @pytest.fixture()
@@ -21,54 +20,57 @@ def monitored_directory():
                 (runfolder_path / ".arteria").mkdir()
                 (runfolder_path / ".arteria/state").write_text(State.STARTED.name)
 
-        (Path(monitored_dir) / "regular_folder").mkdir()
+            shutil.copyfile(
+                f"../resources/RunParameters_NS6000.xml",
+                Path(runfolder_path) / "RunParameters.xml",
+            )
 
         yield monitored_dir
 
 
 @pytest.fixture()
 def runfolder(request):
-    with mock.patch("arteria.models.runfolder_utils.Instrument") as instrument:
-        instrument.completed_marker_file = "CopyComplete.txt"
+    with tempfile.TemporaryDirectory(suffix="RUNFOLDER") as runfolder_path:
+        runfolder_path = Path(runfolder_path)
+        complete_marker_file = 'CopyComplete.txt'
 
-        with tempfile.TemporaryDirectory(suffix="RUNFOLDER") as runfolder_path:
-            runfolder_path = Path(runfolder_path)
+        (runfolder_path / ".arteria").mkdir()
+        (runfolder_path / ".arteria/state").write_text(State.STARTED.value)
 
-            (runfolder_path / "CopyComplete.txt").touch()
+        if hasattr(request, "param"):
+            run_parameters_file = request.param
+            if request.param == "RunParameters_MiSeq.xml":
+                complete_marker_file ='RTAComplete.txt'
+        else:
+            run_parameters_file = "RunParameters_NSXp.xml"
 
-            (runfolder_path / ".arteria").mkdir()
-            (runfolder_path / ".arteria/state").write_text(State.STARTED.value)
+        (runfolder_path / complete_marker_file).touch()
+        shutil.copyfile(
+            f"../resources/{run_parameters_file}",
+            Path(runfolder_path) / "RunParameters.xml",
+        )
 
-            if hasattr(request, "param"):
-                run_parameters_file = request.param
-            else:
-                run_parameters_file = "RunParameters_NSXp.xml"
-            shutil.copyfile(
-                f"tests/resources/{run_parameters_file}",
-                Path(runfolder_path) / "RunParameters.xml",
-            )
-
-            yield Runfolder(runfolder_path)
+        yield Runfolder(runfolder_path)
 
 
 def test_list_runfolders(monitored_directory):
-    runfolders = list_runfolders(monitored_directory)
+    runfolders = list_runfolders([monitored_directory])
 
     assert len(runfolders) == 3
     assert all(
-        runfolder.path == f"{monitored_directory}/runfolder{i}"
+        runfolder.path == Path(f"{monitored_directory}/runfolder{i}")
         for i, runfolder in enumerate(sorted(runfolders, key=lambda r: r.path))
     )
 
 
 def test_list_runfolders_filtered(monitored_directory):
     runfolder = list_runfolders(
-        monitored_directory,
+        [monitored_directory],
         filter_key=lambda r: r.state == State.STARTED
     )
 
     assert len(runfolder) == 1
-    assert runfolder[0].path == f"{monitored_directory}/runfolder0"
+    assert runfolder[0].path == Path(f"{monitored_directory}/runfolder0")
     assert runfolder[0].state == State.STARTED
 
 
@@ -109,9 +111,9 @@ class TestInstrument():
     @pytest.mark.parametrize(
         "runparameter_file,marker_file",
         [
-            ("../resources/RunParameters_MiSeq.xml", "RTAComplete.txt"),
-            ("../resources/RunParameters_NS6000.xml", "CopyComplete.txt"),
-            ("../resources/RunParameters_NSXp.xml", "CopyComplete.txt"),
+            (f"../resources/RunParameters_MiSeq.xml", "RTAComplete.txt"),
+            (f"../resources/RunParameters_NS6000.xml", "CopyComplete.txt"),
+            (f"../resources/RunParameters_NSXp.xml", "CopyComplete.txt"),
         ]
     )
     def test_get_marker_file(self, runparameter_file, marker_file):
