@@ -1,6 +1,7 @@
 import copy
-
 import yaml
+
+from jsonschema import validate
 
 
 class Config:
@@ -29,34 +30,41 @@ class Config:
         self._config_dict = config_dict
 
     @classmethod
-    def new(cls, global_config_dict, exist_ok=False):
+    def new(cls, global_config_dict, exist_ok=False, schema=None):
         """
         Initialize a new global config.
 
         Raises AssertionError if a Config already exists, unles `exist_ok` is
         set to True.
+
+        Validates the global_config_dict with jsonschema
         """
         assert not hasattr(cls, "_instance") or exist_ok, "Config has already been initialized"
 
         if not hasattr(cls, "_instance"):
             cls._instance = super(Config, cls).__new__(cls)
 
+        validate(instance=global_config_dict, schema=schema if schema else {})
         cls._instance._global_config_dict = copy.deepcopy(global_config_dict)
+
 
         return cls()
 
     @classmethod
-    def from_yaml(cls, path, exist_ok=False):
+    def from_yaml(cls, path, exist_ok=False, schema=None):
         """
         Load a config from a yaml file
 
         Raises AssertionError if a Config already exists, unles `exist_ok` is
         set to True.
+
+        Validates loaded config with jsonschema
         """
         # TODO add schema validation
         with open(path, 'r', encoding="utf-8") as config_file:
             config_dict = yaml.safe_load(config_file.read())
 
+        validate(instance=config_dict, schema=schema if schema else {})
         return cls.new(config_dict, exist_ok)
 
     def __getitem__(self, item):
