@@ -71,14 +71,15 @@ class Runfolder():
         if not self._state_file.exists():
             self._state_file.write_text("ready")
 
+
     @property
     def state(self):
         return State(self._state_file.read_text().strip().lower())
 
     @state.setter
     def state(self, new_state):
-        assert new_state in State
-        self._state_file.write_text(new_state.value)
+        assert new_state in State.__members__
+        self._state_file.write_text(State[new_state].value)
 
     @property
     def metadata(self):

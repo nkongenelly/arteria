@@ -1,26 +1,28 @@
 import pytest
+import shutil
 import tempfile
 
 from pathlib import Path
 from arteria import __version__
 from arteria.models.state import State
+from arteria.models.config import Config
 from arteria.services.arteria_runfolder import get_app
-
+from arteria.config_schemas.schema_arteria_runfolder import runfolder_schema
 
 @pytest.fixture()
 def config():
     """
     Setup a temporary directory to be monitored by the service.
     """
-    with tempfile.TemporaryDirectory() as monitored_dir:
-        config = {
+    with tempfile.TemporaryDirectory(delete=False) as monitored_dir:
+        config_dict = {
             "monitored_directories": [monitored_dir],
             "port": 8080,
-            "completed_marker_grace_minutes": 10,
+            "completed_marker_grace_minutes": 0,
             "logger_config_file": "../resources/config/logger.config"
         }
 
-        yield config
+        yield Config.new(config_dict, exist_ok=False, schema=runfolder_schema)
 
 
 @pytest.fixture()
@@ -34,6 +36,11 @@ def runfolder(request, config):
     runfolder = Path(monitored_dir) / "200624_A00834_0183_BHMTFYDRXX"
     (runfolder / ".arteria").mkdir(parents=True)
     (runfolder / ".arteria/state").write_text(state)
+    (runfolder / "CopyComplete.txt").touch()
+    shutil.copyfile(
+        "tests/resources/RunParameters_NS6000.xml",
+        runfolder / "RunParameters.xml",
+    )
 
     return {
         "host": "test-host",
@@ -70,12 +77,12 @@ async def test_version(client, caplog):
 async def test_post_runfolders_path(client, config, runfolder):
     async with client.request(
             "POST",
-            "/runfolders/path/200624_A00834_0183_BHMTFYDRXX",
+            f"/runfolders/path/200624_A00834_0183_BHMTFYDRXX",
             data={"state": "STARTED"}) as resp:
         assert resp.status == 200
 
-        state = Path(config["monitored_directories"][0]) / ".arteria/state"
-        state.write_text(State.STARTED.name)
+        state = Path(config["monitored_directories"][0]) / runfolder.get("path") / ".arteria/state"
+        assert state.read_text() == State.STARTED.value
 
 
 @pytest.mark.parametrize("runfolder", [{"state": State.READY.name}], indirect=True)
@@ -154,6 +161,7 @@ async def test_get_runfolders(client, config, runfolder):
     async with client.request("GET", "/runfolders") as resp:
         assert resp.status == 200
         assert resp.json() == {"runfolders": [runfolder]}
+
 
 @pytest.mark.parametrize("runfolder", [{"state": State.DONE.name}], indirect=True)
 async def test_get_runfolders_filtered(client, config, runfolder):

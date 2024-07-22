@@ -97,7 +97,7 @@ class TestRunfolder():
         assert runfolder.state == State.STARTED
 
     def test_set_state(self, runfolder):
-        runfolder.state = State.DONE
+        runfolder.state = State.DONE.name
         assert runfolder.state == State.DONE
 
     def get_path(self, runfolder):

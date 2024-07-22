@@ -79,3 +79,7 @@ class Config:
         """
         # Copy is returned to avoid accidentaly modifying the original config.
         return copy.deepcopy(self._config_dict)
+
+    @property
+    def config_dict(self):
+        return self._config_dict
