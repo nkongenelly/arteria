@@ -145,8 +145,13 @@ async def test_runfolders_pickup_not_found(client, config, runfolder):
         assert resp.text == "No ready runfolders available."
 
 
-@pytest.mark.parametrize("runfolder", [{"state": State.STARTED.name}], indirect=True)
 async def test_get_runfolders(client, config, runfolder):
-    async with client.request("GET", "/runfolders/path/200624_A00834_0183_BHMTFYDRXX") as resp:
+    async with client.request("GET", "/runfolders") as resp:
+        assert resp.status == 200
+        assert resp.json() == {"runfolders": [runfolder]}
+
+@pytest.mark.parametrize("runfolder", [{"state": State.DONE.name}], indirect=True)
+async def test_get_runfolders_filtered(client, config, runfolder):
+    async with client.request("GET", "/runfolders") as resp:
         assert resp.status == 200
         assert resp.json() == {"runfolders": [runfolder]}

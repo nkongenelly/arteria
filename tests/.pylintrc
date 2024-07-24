@@ -1,4 +1,0 @@
-[MESSAGES CONTROL]
-disable=W0613,W0621,C0114,C0115,C0116,R0903
-# W0613 and W0621 are uncompatible with the use of fixtures
-# C0114,C0115 and C0116: tests often don't need a docstring
