@@ -17,7 +17,7 @@ def config():
             "monitored_directories": [monitored_dir],
             "port": 8080,
             "completed_marker_grace_minutes": 10,
-            "logger_config_file": "../resources/config/logger.config"
+            "logger_config_file": "tests/resources/config/logger.config"
         }
 
         yield config
@@ -55,12 +55,14 @@ async def client(aiohttp_client, config):
     return await aiohttp_client(get_app(config))
 
 
-async def test_version(client):
+async def test_version(client, caplog):
     async with client.request("GET", "/version") as resp:
         assert resp.status == 200
         content = await resp.json()
-
-    assert content == {"version": __version__}
+        assert content == {"version": __version__}
+        # Test logger is initialized and used
+        assert 'INFO' in caplog.text
+        assert 'GET /version' in caplog.text
 
 
 @pytest.mark.parametrize("runfolder", [{"state": State.READY.name}], indirect=True)
