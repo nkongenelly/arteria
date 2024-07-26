@@ -3,10 +3,8 @@ import argparse
 import logging.config
 
 from aiohttp import web
-
 from arteria.models.config import Config
-from arteria.handlers.base import base_routes as routes
-
+from arteria.handlers.arteria_runfolder_handlers import routes
 
 
 parser = argparse.ArgumentParser(description="arteria-runfolder server")
@@ -38,7 +36,7 @@ def get_app(config):
     """
     app = web.Application()
     inistialize_logger(config)
-    app.router.add_routes(routes)
+    [app.router.add_routes(route) for route in routes]
     return app
 
 
@@ -52,7 +50,6 @@ def inistialize_logger(config):
         logging.config.fileConfig(logger_file)
     except RuntimeError:
         # When config file has yaml format (without section headers)
-       with open(logger_file, 'r') as stream:
+        with open(logger_file, 'r') as stream:
             config = yaml.load(stream, Loader=yaml.FullLoader)
             logging.config.dictConfig(config)
-

@@ -5,6 +5,7 @@ import tempfile
 import xmltodict
 
 from pathlib import Path
+from aiohttp.web_exceptions import HTTPNotFound
 from arteria.models.state import State
 from arteria.models.config import Config
 from arteria.models.runfolder_utils import list_runfolders, Runfolder, Instrument
@@ -44,7 +45,7 @@ def runfolder(request):
         if hasattr(request, "param"):
             run_parameters_file = request.param
             if request.param == "RunParameters_MiSeq.xml":
-                complete_marker_file ='RTAComplete.txt'
+                complete_marker_file = 'RTAComplete.txt'
         else:
             run_parameters_file = "RunParameters_NSXp.xml"
 
@@ -80,7 +81,7 @@ def test_list_runfolders_filtered(monitored_directory):
 
 class TestRunfolder():
     def test_init_regular_folder(self):
-        with pytest.raises(AssertionError):
+        with pytest.raises(HTTPNotFound):
             with tempfile.TemporaryDirectory() as regular_folder:
                 Runfolder(regular_folder)
 

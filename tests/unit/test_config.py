@@ -105,7 +105,7 @@ def test_default_config_from_existing_config(config, config_dict):
 
     assert config.to_dict() == expected_dict
 
-    config = Config() # issue, still contains default variable
+    config = Config()  # issue, still contains default variable
     assert config.to_dict() == config_dict
 
 

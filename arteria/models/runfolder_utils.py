@@ -1,6 +1,7 @@
 import os
 import re
 import time
+import socket
 import logging
 import xmltodict
 
@@ -52,8 +53,9 @@ class Runfolder():
             )
             self.run_parameters = xmltodict.parse(run_parameter_file.read_text())["RunParameters"]
         except StopIteration as exc:
-            raise AssertionError(f"File [Rr]unParameters.xml not found in runfolder {path}") from exc
-
+            raise web.HTTPNotFound(
+                reason=f"File [Rr]unParameters.xml not found in runfolder {path}"
+            ) from exc
 
         marker_file_name = Instrument(self.run_parameters).completed_marker_file
         marker_file = (self.path / marker_file_name)
@@ -78,7 +80,8 @@ class Runfolder():
 
     @state.setter
     def state(self, new_state):
-        assert new_state in State.__members__
+        if new_state not in State.__members__:
+            raise web.HTTPBadRequest(reason=f"The state '{new_state}' is not valid")
         self._state_file.write_text(State[new_state].value)
 
     @property
@@ -117,6 +120,16 @@ class Runfolder():
                 log.debug("Library tube barcode not found")
 
         return metadata
+
+    def __repr__(self):
+        return {
+            "host": self.host if hasattr(self, 'host') else '',
+            "link": self.link if hasattr(self, 'link') else '',
+            "metadata": self.metadata,
+            # "path": self.path,
+            "service_version": __version__,
+            "state": self.state.name,
+        }
 
 
 class Instrument:

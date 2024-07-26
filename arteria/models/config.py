@@ -47,7 +47,6 @@ class Config:
         validate(instance=global_config_dict, schema=schema if schema else {})
         cls._instance._global_config_dict = copy.deepcopy(global_config_dict)
 
-
         return cls()
 
     @classmethod
