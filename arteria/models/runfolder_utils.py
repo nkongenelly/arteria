@@ -14,7 +14,8 @@ log = logging.getLogger(__name__)
 DEFAULT_CONFIG = {
     "completed_marker_grace_minutes": 0,
 }
-def list_runfolders(monitored_directories, filter_key=lambda r: True):
+
+def list_runfolders(monitored_directories, filter_key=lambda r: True, request=None):
     """
     Returns list of Runfolders in the monitored_directories
     according to the state filter provided (filter_key), or all

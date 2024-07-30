@@ -1,10 +1,11 @@
-import yaml
-import pytest
 import tempfile
 import jsonschema
 
-from arteria.models.config import Config
+import yaml
+import pytest
 from jsonschema.exceptions import ValidationError
+
+from arteria.models.config import Config
 from arteria.config_schemas.schema_arteria_runfolder import runfolder_schema
 
 
@@ -28,13 +29,12 @@ def config(config_dict):
 
 
 def test_config_from_yaml(config_dict):
-    # TODO test `exist_ok`
     with tempfile.NamedTemporaryFile(mode="r+", delete=False) as config_file:
         config_file.write(yaml.dump(config_dict))
         config_file.seek(0)
         config = Config.from_yaml(config_file.name)
 
-        assert config._config_dict == config_dict
+        assert config.to_dict() == config_dict
 
         config_file.close()
         del Config._instance
@@ -69,7 +69,7 @@ def test_config_immutable(config, config_dict):
 
 
 def test_config_new(config, config_dict):
-    # TODO add comments to explain expected behavior
+    # exist_ok=True allows overwriting the Config
     assert Config().to_dict() == config_dict
 
     assert Config() == Config()
@@ -85,7 +85,7 @@ def test_config_new(config, config_dict):
 
 
 def test_default_config_from_scratch():
-    # TODO add comments to explain expected behavior
+    # Config properties can only be updated y callinnng new() method with exist_ok=True
     defaults = {"default_variable": 1}
     config = Config(defaults)
     assert config.to_dict() == defaults
@@ -96,11 +96,12 @@ def test_default_config_from_scratch():
 
 
 def test_default_config_from_existing_config(config, config_dict):
-    # TODO add comments to explain expected behavior
+    """Config class gives same instance of the config multiple times, if not overwritten
+    by calling the new() method with exist_ok=True """
     defaults = {"default_variable": 1, "port": 0}
     config = Config(defaults)
 
-    expected_dict = {k: v for k, v in defaults.items()}
+    expected_dict = dict(defaults.items())
     expected_dict.update(config_dict)
 
     assert config.to_dict() == expected_dict

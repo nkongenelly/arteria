@@ -1,10 +1,11 @@
 import os
 import shutil
-import pytest
 import tempfile
-import xmltodict
-
 from pathlib import Path
+
+import xmltodict
+import pytest
+
 from aiohttp.web_exceptions import HTTPNotFound
 from arteria.models.state import State
 from arteria.models.config import Config
@@ -117,17 +118,19 @@ class TestRunfolder():
         assert runfolder.metadata == metadata
 
 
-class TestInstrument():
-    @pytest.mark.parametrize(
-        "runparameter_file,marker_file",
-        [
-            ("tests/resources/RunParameters_MiSeq.xml", "RTAComplete.txt"),
-            ("tests/resources/RunParameters_NS6000.xml", "CopyComplete.txt"),
-            ("tests/resources/RunParameters_NSXp.xml", "CopyComplete.txt"),
-        ]
-    )
-    def test_get_marker_file(self, runparameter_file, marker_file):
-        run_parameter_file = Path(runparameter_file)
-        run_parameters = xmltodict.parse(run_parameter_file.read_text())["RunParameters"]
-        instrument = Instrument(run_parameters)
-        assert instrument.completed_marker_file == marker_file
+# class TestInstrument(object) :
+@pytest.mark.parametrize(
+    "runparameter_file,marker_file",
+    [
+        ("tests/resources/RunParameters_MiSeq.xml", "RTAComplete.txt"),
+        ("tests/resources/RunParameters_NS6000.xml", "CopyComplete.txt"),
+        ("tests/resources/RunParameters_NSXp.xml", "CopyComplete.txt"),
+    ]
+)
+def test_get_marker_file(runparameter_file, marker_file):
+    run_parameter_file = Path(runparameter_file)
+    run_parameters = xmltodict.parse(
+        run_parameter_file.read_text(encoding="utf-8")
+    )["RunParameters"]
+    instrument = Instrument(run_parameters)
+    assert instrument.completed_marker_file == marker_file

@@ -1,8 +1,9 @@
-import pytest
 import shutil
 import tempfile
 
 from pathlib import Path
+import pytest
+
 from arteria import __version__
 from arteria.models.state import State
 from arteria.models.config import Config
