@@ -28,7 +28,7 @@ def list_runfolders(monitored_directories, filter_key=lambda r: True, request=No
         monitored_dir_path = Path(monitored_directory)
         for subdir in monitored_dir_path.iterdir():
             try:
-                if filter_key(runfolder := Runfolder(monitored_dir_path / subdir)):
+                if filter_key(runfolder := Runfolder(monitored_dir_path / subdir, request)):
                     runfolders.append(runfolder)
             except web.HTTPNotFound as e:
                 if e == f"File [Rr]unParameters.xml not found in runfolder {subdir}":
@@ -41,7 +41,7 @@ class Runfolder():
     """
     A class to manipulate runfolders on disk
     """
-    def __init__(self, path):
+    def __init__(self, path, request=None):
         self.config = Config(DEFAULT_CONFIG)
         self.path = Path(path)
 
