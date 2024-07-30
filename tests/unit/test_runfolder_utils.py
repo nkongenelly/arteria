@@ -1,3 +1,4 @@
+import os
 import shutil
 import pytest
 import tempfile
@@ -21,7 +22,7 @@ def monitored_directory():
                 (runfolder_path / ".arteria/state").write_text(State.STARTED.name)
 
             shutil.copyfile(
-                f"tests/resources/RunParameters_NS6000.xml",
+                "tests/resources/RunParameters_NS6000.xml",
                 Path(runfolder_path) / "RunParameters.xml",
             )
 
@@ -62,6 +63,17 @@ def test_list_runfolders(monitored_directory):
         for i, runfolder in enumerate(sorted(runfolders, key=lambda r: r.path))
     )
 
+def test_list_regular_folder(monitored_directory):
+        runfolder_path = Path(monitored_directory) / "regular_folder"
+        runfolder_path.mkdir()
+
+        assert len(os.listdir(monitored_directory)) == 4
+        runfolders = list_runfolders([monitored_directory])
+        assert len(runfolders) == 3
+        assert all(
+            runfolder.path == Path(f"{monitored_directory}/runfolder{i}")
+            for i, runfolder in enumerate(sorted(runfolders, key=lambda r: r.path))
+        )
 
 def test_list_runfolders_filtered(monitored_directory):
     runfolder = list_runfolders(

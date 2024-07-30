@@ -1,7 +1,6 @@
 import os
 import re
 import time
-import socket
 import logging
 import xmltodict
 
@@ -17,15 +16,17 @@ def list_runfolders(monitored_directories, filter_key=lambda r: True):
     according to the state filter provided (filter_key), or all
     runfolders when no state filter is given.
     """
-    return [
-        Runfolder(
-            os.path.join(monitored_directory, subdir)
-        )
-        for monitored_directory in monitored_directories
-        for subdir in os.listdir(monitored_directory)
-        if filter_key(Runfolder(os.path.join(monitored_directory, subdir)))
-    ]
+    runfolders = []
+    for monitored_directory in monitored_directories:
+        for subdir in os.listdir(monitored_directory):
+            try:
+                if filter_key(Runfolder(os.path.join(monitored_directory, subdir))):
+                    runfolders.append(Runfolder(os.path.join(monitored_directory, subdir)))
+            except AssertionError as e:
+                if e == f"File [Rr]unParameters.xml not found in runfolder {subdir}":
+                    continue
 
+    return runfolders
 
 class Runfolder():
     def __init__(self, path, grace_minutes=0):
@@ -41,8 +42,8 @@ class Runfolder():
                 if path.exists()
             )
             self.run_parameters = xmltodict.parse(run_parameter_file.read_text())["RunParameters"]
-        except StopIteration:
-            raise AssertionError("File [Rr]unParameters.xml not found in runfolder {path}")
+        except StopIteration as e:
+            raise AssertionError(f"File [Rr]unParameters.xml not found in runfolder {path}")
 
         marker_file_name = Instrument(self.run_parameters).completed_marker_file
         marker_file = (self.path / marker_file_name)
