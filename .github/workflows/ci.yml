@@ -28,6 +28,6 @@ jobs:
       - name: Lint code
         run: poetry run pylint arteria/ --rcfile=arteria/.pylintrc
       - name: Lint tests
-        run: poetry run pylint tests --errors-only --rcfile=tests/.pylintrc
+        run: poetry run pylint tests --rcfile=tests/.pylintrc
       - name: Build package
         run: poetry build
