@@ -111,9 +111,9 @@ class TestInstrument():
     @pytest.mark.parametrize(
         "runparameter_file,marker_file",
         [
-            (f"tests/resources/RunParameters_MiSeq.xml", "RTAComplete.txt"),
-            (f"tests/resources/RunParameters_NS6000.xml", "CopyComplete.txt"),
-            (f"tests/resources/RunParameters_NSXp.xml", "CopyComplete.txt"),
+            ("tests/resources/RunParameters_MiSeq.xml", "RTAComplete.txt"),
+            ("tests/resources/RunParameters_NS6000.xml", "CopyComplete.txt"),
+            ("tests/resources/RunParameters_NSXp.xml", "CopyComplete.txt"),
         ]
     )
     def test_get_marker_file(self, runparameter_file, marker_file):
