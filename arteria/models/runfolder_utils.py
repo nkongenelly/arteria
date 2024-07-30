@@ -18,10 +18,11 @@ def list_runfolders(monitored_directories, filter_key=lambda r: True):
     """
     runfolders = []
     for monitored_directory in monitored_directories:
-        for subdir in os.listdir(monitored_directory):
+        monitored_dir_path = Path(monitored_directory)
+        for subdir in monitored_dir_path.iterdir():
             try:
-                if filter_key(Runfolder(os.path.join(monitored_directory, subdir))):
-                    runfolders.append(Runfolder(os.path.join(monitored_directory, subdir)))
+                if filter_key(runfolder := Runfolder(monitored_dir_path / subdir)):
+                    runfolders.append(runfolder)
             except AssertionError as e:
                 if e == f"File [Rr]unParameters.xml not found in runfolder {subdir}":
                     continue
@@ -103,12 +104,6 @@ class Instrument:
     ]
 
     INSTRUMENT_MARKER_DICT = {
-        """
-        Returns a dict of instruments with the following details
-            id_pattern: id pattern that identifies the Instrument
-            completed_marker_file: File name(str) of the completed marker file
-
-        """
         "NovaSeq": {
             'id_pattern': '^A', 'completed_marker_file': 'CopyComplete.txt'
         },
@@ -139,14 +134,14 @@ class Instrument:
         Returns the completed_marker_file name(str) which is specific to the instrument
         """
         instrument, instrument_keys = self.instrument
-        completed_marker_file = instrument_keys.get("completed_marker_file")
+        completed_marker_file = instrument_keys["completed_marker_file"]
         return completed_marker_file
 
     @property
     def instrument(self):
         """
         Returns a dictionary of the instrument id_pattern and completed_marker file
-        These details are currently hardcoded in the get_instrument_marker_dict()
+        These details are currently hardcoded in the INSTRUMENT_MARKER_DICT variable
         """
         return next(
             (
@@ -173,5 +168,5 @@ class Instrument:
                     if key in self.run_parameters.keys()
                 )
             except StopIteration as e:
-                raise TypeError(f"{self.instrument} is not recognized. Error: {e} ")
+                raise TypeError(f"{self.instrument} is not recognized") from e
         return instrument_id
