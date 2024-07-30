@@ -65,9 +65,23 @@ def test_list_runfolders(monitored_directory):
 
     assert len(runfolders) == 3
     assert all(
+        Path(runfolder.path) == Path(f"{monitored_directory}/runfolder{i}")
+        for i, runfolder in enumerate(sorted(runfolders, key=lambda r: r.path))
+    )
+
+
+def test_list_regular_folder(monitored_directory):
+    runfolder_path = Path(monitored_directory) / "regular_folder"
+    runfolder_path.mkdir()
+
+    assert len(os.listdir(monitored_directory)) == 4
+    runfolders = list_runfolders([monitored_directory])
+    assert len(runfolders) == 3
+    assert all(
         runfolder.path == Path(f"{monitored_directory}/runfolder{i}")
         for i, runfolder in enumerate(sorted(runfolders, key=lambda r: r.path))
     )
+
 
 def test_list_runfolders_filtered(monitored_directory):
     runfolder = list_runfolders(

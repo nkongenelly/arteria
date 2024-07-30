@@ -30,11 +30,10 @@ async def get_runfolders(request):
     Returns some information about the runfolder as json
     """
     runfolder_path = get_runfolders_path_from_query(request)
-
-    runfolder_cls = Runfolder(runfolder_path, request)
+    runfolder_dict = serialize_runfolder_path(Runfolder(runfolder_path, request))
 
     return web.json_response(
-        data=runfolder_cls.__repr__(),
+        data=runfolder_dict,
         status=200
     )
 
@@ -50,9 +49,11 @@ async def get_next_runfolder(request):
         filter_key=lambda r: r.state == State.READY,
         request=request
     )
+
     if len(runfolder_cls) > 0:
+        runfolder_dict0 = serialize_runfolder_path(runfolder_cls[0])
         return web.json_response(
-            data=runfolder_cls[0].__repr__(),
+            data=runfolder_dict0,
             status=200
         )
     else:
@@ -74,8 +75,9 @@ async def get_pickup_runfolder(request):
 
     if len(runfolder_cls) > 0:
         runfolder_cls[0].state = State.PENDING.name
+        runfolder_dict0 = serialize_runfolder_path(runfolder_cls[0])
         return web.json_response(
-            data=runfolder_cls[0].__repr__(),
+            data=runfolder_dict0,
             status=200
         )
     else:
@@ -97,10 +99,11 @@ async def get_all_runfolders(request):
         request=request
     )
 
+    for runfolder_count, runfolder in enumerate(runfolders):
+        runfolders[runfolder_count] = serialize_runfolder_path(runfolder)
+
     return web.json_response(
-        data={"runfolders": [
-            runfolder.__repr__() for runfolder in runfolders
-        ]},
+        data={"runfolders": runfolders},
         status=200
     )
 
@@ -115,6 +118,15 @@ def get_runfolders_path_from_query(request):
     )
 
 
-routes = list()
-routes.append(base_routes)
-routes.append(arteria_runfolder_routes)
+def serialize_runfolder_path(runfolder_cls):
+    """
+    Get the path uri as web.json_response gives an error when
+    self.path is of type Path
+    """
+    runfolder_dict = runfolder_cls.__repr__()
+    runfolder_dict['path'] = Path(runfolder_dict['path']).as_uri()
+
+    return runfolder_dict
+
+
+routes = [base_routes, arteria_runfolder_routes]

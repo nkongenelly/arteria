@@ -1,11 +1,12 @@
 import os
 import re
 import time
-import socket
 import logging
 import xmltodict
 
+from aiohttp import web
 from pathlib import Path
+from arteria import __version__
 from arteria.models.state import State
 from arteria.models.config import Config
 
@@ -14,6 +15,7 @@ log = logging.getLogger(__name__)
 DEFAULT_CONFIG = {
     "completed_marker_grace_minutes": 0,
 }
+
 
 def list_runfolders(monitored_directories, filter_key=lambda r: True, request=None):
     """
@@ -28,7 +30,7 @@ def list_runfolders(monitored_directories, filter_key=lambda r: True, request=No
             try:
                 if filter_key(runfolder := Runfolder(monitored_dir_path / subdir)):
                     runfolders.append(runfolder)
-            except AssertionError as e:
+            except web.HTTPNotFound as e:
                 if e == f"File [Rr]unParameters.xml not found in runfolder {subdir}":
                     continue
 
@@ -42,7 +44,17 @@ class Runfolder():
     def __init__(self, path):
         self.config = Config(DEFAULT_CONFIG)
         self.path = Path(path)
-        assert self.path.is_dir()
+
+        runfolder_name = os.path.basename(self.path)
+        if not self.path.is_dir():
+            raise web.HTTPNotFound(
+                reason=f"Runfolder '{runfolder_name}' does not exist"
+            )
+        if request:
+            self.host = request.url.raw_host
+            link = f"{request.scheme}://{self.host}/api/1.0"
+            self.link = f"{link}{request.path}"
+
         try:
             run_parameter_file = next(
                 path
@@ -73,7 +85,6 @@ class Runfolder():
         self._state_file = (self.path / ".arteria/state")
         if not self._state_file.exists():
             self._state_file.write_text("ready")
-
 
     @property
     def state(self):
@@ -127,7 +138,7 @@ class Runfolder():
             "host": self.host if hasattr(self, 'host') else '',
             "link": self.link if hasattr(self, 'link') else '',
             "metadata": self.metadata,
-            # "path": self.path,
+            "path": self.path,
             "service_version": __version__,
             "state": self.state.name,
         }

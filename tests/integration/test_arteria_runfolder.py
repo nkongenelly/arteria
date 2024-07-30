@@ -25,7 +25,6 @@ def config():
         }
 
         yield Config.new(config_dict, exist_ok=False, schema=runfolder_schema)
-        # monitored_dir.close()
         del Config._instance
 
 
@@ -70,6 +69,7 @@ def get_expected_runfolder(runfolder, resp, state=None):
     runfolder['host'] = resp.url.raw_host
     runfolder['link'] = f"{resp.url.scheme}://{resp.url.raw_host}/api/1.0{resp.url.raw_path}"
     runfolder['state'] = state if state else runfolder['state']
+    runfolder['path'] = runfolder['path'].as_uri()
 
     return runfolder
 
@@ -93,7 +93,7 @@ async def test_post_runfolders_path(client, config, runfolder):
             data={"state": "STARTED"}) as resp:
         assert resp.status == 200
 
-        state = Path(config["monitored_directories"][0]) / runfolder.get("path") / ".arteria/state"
+        state = runfolder.get('path') / ".arteria/state"
         assert state.read_text() == State.STARTED.value
 
 
@@ -144,7 +144,6 @@ async def test_runfolders_next(client, config, runfolder):
         expected_runfolder = get_expected_runfolder(runfolder, resp)
 
         content = await resp.json()
-        content['path'] = expected_runfolder.get("path")
         assert content == expected_runfolder
         assert content["state"] == State.READY.name
 
@@ -159,15 +158,16 @@ async def test_runfolders_next_not_found(client, config, runfolder):
 @pytest.mark.parametrize("runfolder", [{"state": State.READY.name}], indirect=True)
 async def test_runfolders_pickup(client, config, runfolder):
     async with client.request("GET", "/runfolders/pickup") as resp:
-        expected_runfolder = get_expected_runfolder(runfolder, resp, State.PENDING.name)
         content = await resp.json()
+
+        state = runfolder.get("path") / ".arteria/state"
+        assert state.read_text() == "pending"
+
+        expected_runfolder = get_expected_runfolder(runfolder, resp, State.PENDING.name)
         content['path'] = expected_runfolder.get("path")
         assert resp.status == 200
         assert content == expected_runfolder
         assert content["state"] == State.PENDING.name
-
-        state = content['path'] / ".arteria/state"
-        assert state.read_text() == "pending"
 
 
 @pytest.mark.parametrize("runfolder", [{"state": State.STARTED.name}], indirect=True)
