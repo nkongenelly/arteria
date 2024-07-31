@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<RunParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EnableCloud>true</EnableCloud>
+  <RunParametersVersion>MiSeq_1_1</RunParametersVersion>
+  <CopyManifests>true</CopyManifests>
+  <FlowcellRFIDTag>
+    <SerialNumber>000000000-BWFHW</SerialNumber>
+    <PartNumber>15028382</PartNumber>
+    <ExpirationDate>2019-04-19T00:00:00</ExpirationDate>
+  </FlowcellRFIDTag>
+  <PR2BottleRFIDTag>
+    <SerialNumber>MS6738611-00PR2</SerialNumber>
+    <PartNumber>15041807</PartNumber>
+    <ExpirationDate>2019-04-23T00:00:00</ExpirationDate>
+  </PR2BottleRFIDTag>
+  <ReagentKitRFIDTag>
+    <SerialNumber>MS6728155-600V3</SerialNumber>
+    <PartNumber>15043962</PartNumber>
+    <ExpirationDate>2019-03-12T00:00:00</ExpirationDate>
+  </ReagentKitRFIDTag>
+  <Resumable>true</Resumable>
+  <ManifestFiles />
+  <AfterRunWashMethod>Post-Run Wash</AfterRunWashMethod>
+  <Setup>
+    <SupportMultipleSurfacesInUI>true</SupportMultipleSurfacesInUI>
+    <ApplicationVersion>2.6.2.1</ApplicationVersion>
+    <NumTilesPerSwath>19</NumTilesPerSwath>
+    <NumSwaths>1</NumSwaths>
+    <NumLanes>1</NumLanes>
+    <ApplicationName>MiSeq Control Software</ApplicationName>
+  </Setup>
+  <RunID>180718_M04499_0151_000000000-BWFHW</RunID>
+  <ScannerID>M04499</ScannerID>
+  <RunNumber>151</RunNumber>
+  <FPGAVersion>9.5.12</FPGAVersion>
+  <MCSVersion>2.6.2.1</MCSVersion>
+  <RTAVersion>1.18.54</RTAVersion>
+  <Barcode>000000000-BWFHW</Barcode>
+  <PR2BottleBarcode>MS6738611-00PR2</PR2BottleBarcode>
+  <ReagentKitPartNumberEntered>15043962</ReagentKitPartNumberEntered>
+  <ReagentKitVersion>Version3</ReagentKitVersion>
+  <ReagentKitBarcode>MS6728155-600V3</ReagentKitBarcode>
+  <PreviousPR2BottleBarcode />
+  <PreviousReagentKitBarcode />
+  <ExperimentName>Myeloid_DNA_Public_Data_MiSeq_11pM</ExperimentName>
+  <Chemistry>Amplicon</Chemistry>
+  <Username>svc_cpduser</Username>
+  <Workflow>
+    <Analysis>GenerateFASTQ</Analysis>
+  </Workflow>
+  <EnableAnalysis>false</EnableAnalysis>
+  <Reads>
+    <RunInfoRead Number="1" NumCycles="151" IsIndexedRead="N" />
+    <RunInfoRead Number="2" NumCycles="8" IsIndexedRead="Y" />
+    <RunInfoRead Number="3" NumCycles="8" IsIndexedRead="Y" />
+    <RunInfoRead Number="4" NumCycles="151" IsIndexedRead="N" />
+  </Reads>
+  <TempFolder>D:\Illumina\MiSeqTemp\180718_M04499_0151_000000000-BWFHW</TempFolder>
+  <AnalysisFolder>D:\Illumina\MiSeqAnalysis\180718_M04499_0151_000000000-BWFHW</AnalysisFolder>
+  <RunStartDate>180718</RunStartDate>
+  <MostRecentWashType>PostRun</MostRecentWashType>
+  <RecipeFolder>C:\Illumina\MiSeq Control Software\Recipe\V3</RecipeFolder>
+  <ILMNOnlyRecipeFolder>C:\Illumina\MiSeq Control Software\Recipe</ILMNOnlyRecipeFolder>
+  <SampleSheetName>Myeloid_DNA_Public_Data_MiSeq_11pM_SampleSheet</SampleSheetName>
+  <SampleSheetFolder>T:\nmouttham</SampleSheetFolder>
+  <ManifestFolder>D:\Illumina\MiSeq Control Software\Manifests</ManifestFolder>
+  <OutputFolder>\\ussd-prd-isi04\Halo\MiSeq_Runs\180718_M04499_0151_000000000-BWFHW</OutputFolder>
+  <FocusMethod>AutoFocus</FocusMethod>
+  <SurfaceToScan>Both</SurfaceToScan>
+  <SaveFocusImages>false</SaveFocusImages>
+  <SaveScanImages>true</SaveScanImages>
+  <CloudUsername>nmouttham@illumina.com</CloudUsername>
+  <RunManagementType>BaseSpaceCloud</RunManagementType>
+  <CloudRunId>105217112</CloudRunId>
+  <SendInstrumentHealthToILMN>true</SendInstrumentHealthToILMN>
+</RunParameters>
