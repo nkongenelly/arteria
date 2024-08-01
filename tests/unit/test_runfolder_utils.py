@@ -1,3 +1,4 @@
+from pathlib import Path
 import os
 import shutil
 import pytest
@@ -40,8 +41,8 @@ def runfolder(request):
 
         (runfolder_path / "CopyComplete.txt").touch()
 
-            (runfolder_path / ".arteria").mkdir()
-            (runfolder_path / ".arteria/state").write_text(State.STARTED.value)
+        (runfolder_path / ".arteria").mkdir()
+        (runfolder_path / ".arteria/state").write_text(State.STARTED.value)
 
         if hasattr(request, "param"):
             run_parameters_file = request.param
