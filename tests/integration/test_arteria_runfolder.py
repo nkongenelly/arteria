@@ -74,7 +74,7 @@ def get_expected_runfolder(runfolder, resp, state=None):
     return runfolder
 
 
-async def get_request(client, caplog):
+async def test_version(client, caplog):
     async with client.request("GET", "/version") as resp:
         assert resp.status == 200
         content = await resp.json()
