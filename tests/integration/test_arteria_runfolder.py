@@ -1,15 +1,12 @@
 import shutil
-import tempfile
 
 from pathlib import Path
-import pytest
 
 from arteria import __version__
 from arteria.models.state import State
 from arteria.models.config import Config
-from arteria.services.arteria_runfolder import get_app
+from tests.fixtures.integration_fixtures import *
 from arteria.config_schemas.schema_arteria_runfolder import runfolder_schema
-
 
 @pytest.fixture()
 def config():
@@ -26,6 +23,7 @@ def config():
 
         yield Config.new(config_dict, exist_ok=False, schema=runfolder_schema)
         del Config._instance
+
 
 
 @pytest.fixture()
@@ -57,14 +55,6 @@ def runfolder(request, config):
     }
 
 
-@pytest.fixture()
-async def client(aiohttp_client, config):
-    """
-    Instantiate a web client with a specific config.
-    """
-    return await aiohttp_client(get_app(config))
-
-
 def get_expected_runfolder(runfolder, resp, state=None):
     runfolder['host'] = resp.url.raw_host
     runfolder['link'] = f"{resp.url.scheme}://{resp.url.raw_host}/api/1.0{resp.url.raw_path}"
@@ -74,7 +64,7 @@ def get_expected_runfolder(runfolder, resp, state=None):
     return runfolder
 
 
-async def get_request(client, caplog):
+async def test_version(client, caplog):
     async with client.request("GET", "/version") as resp:
         assert resp.status == 200
         content = await resp.json()
