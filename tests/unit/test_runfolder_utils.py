@@ -10,7 +10,20 @@ import pytest
 from arteria.models.runfolder_utils import list_runfolders, Runfolder, Instrument
 from arteria.models.state import State
 from arteria.models.config import Config
+from arteria.config_schemas.schema_arteria_runfolder import runfolder_schema
 
+
+
+def initialize_config():
+    config_dict = {
+        "port": 8080,
+        "completed_marker_grace_minutes": 0,
+        "monitored_directories": ["/tmp/path1", "/tmp/path2"],
+        "logger_config_file": "/tmp/path3"
+    }
+    Config.new(config_dict, exist_ok=False, schema=runfolder_schema)
+
+initialize_config()
 
 @pytest.fixture()
 def monitored_directory():
@@ -38,21 +51,25 @@ def monitored_directory():
 def runfolder(request):
     with tempfile.TemporaryDirectory(suffix="RUNFOLDER") as runfolder_path:
         runfolder_path = Path(runfolder_path)
-
-        (runfolder_path / "CopyComplete.txt").touch()
+        complete_marker_file = 'CopyComplete.txt'
 
         (runfolder_path / ".arteria").mkdir()
         (runfolder_path / ".arteria/state").write_text(State.STARTED.value)
 
         if hasattr(request, "param"):
             run_parameters_file = request.param
-            shutil.copyfile(
-                f"tests/resources/{run_parameters_file}",
-                Path(runfolder_path) / "RunParameters.xml",
-            )
+            if request.param == "RunParameters_MiSeq.xml":
+                complete_marker_file = 'RTAComplete.txt'
+        else:
+            run_parameters_file = "RunParameters_NSXp.xml"
 
-            yield Runfolder(runfolder_path)
+        (runfolder_path / complete_marker_file).touch()
+        shutil.copyfile(
+            f"tests/resources/{run_parameters_file}",
+            Path(runfolder_path) / "RunParameters.xml",
+        )
 
+        yield Runfolder(runfolder_path)
 
 def test_list_runfolders(monitored_directory):
     assert len(os.listdir(monitored_directory)) == 4
@@ -84,11 +101,12 @@ class TestRunfolder():
     def test_init_young_runfolder(self, runfolder):
         Config.new({
             "completed_marker_grace_minutes": 60,
-        })
+        }, exist_ok=True)
         with pytest.raises(AssertionError):
             Runfolder(runfolder.path)
 
         del Config._instance
+        initialize_config()
 
     def test_get_state(self, runfolder):
         assert runfolder.state == State.STARTED

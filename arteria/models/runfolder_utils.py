@@ -10,10 +10,6 @@ from arteria.models.config import Config
 
 log = logging.getLogger(__name__)
 
-DEFAULT_CONFIG = {
-    "completed_marker_grace_minutes": 0,
-}
-
 
 def list_runfolders(monitored_directories, filter_key=lambda r: True):
     """
@@ -39,7 +35,7 @@ class Runfolder():
     A class to manipulate runfolders on disk
     """
     def __init__(self, path):
-        self.config = Config(DEFAULT_CONFIG)
+        self.config = Config().to_dict()
         self.path = Path(path)
         assert self.path.is_dir()
         try:
@@ -69,6 +65,7 @@ class Runfolder():
         self._state_file = (self.path / ".arteria/state")
         if not self._state_file.exists():
             self._state_file.write_text("ready")
+
 
     @property
     def state(self):

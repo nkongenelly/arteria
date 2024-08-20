@@ -1,10 +1,14 @@
-import pytest
+import shutil
 import tempfile
 
 from pathlib import Path
+import pytest
+
 from arteria import __version__
 from arteria.models.state import State
+from arteria.models.config import Config
 from arteria.services.arteria_runfolder import get_app
+from arteria.config_schemas.schema_arteria_runfolder import runfolder_schema
 
 
 @pytest.fixture()
@@ -12,15 +16,16 @@ def config():
     """
     Setup a temporary directory to be monitored by the service.
     """
-    with tempfile.TemporaryDirectory() as monitored_dir:
-        config = {
+    with tempfile.TemporaryDirectory(delete=False) as monitored_dir:
+        config_dict = {
             "monitored_directories": [monitored_dir],
             "port": 8080,
-            "completed_marker_grace_minutes": 10,
+            "completed_marker_grace_minutes": 0,
             "logger_config_file": "tests/resources/config/logger.config"
         }
 
-        yield config
+        yield Config.new(config_dict, exist_ok=False, schema=runfolder_schema)
+        del Config._instance
 
 
 @pytest.fixture()
@@ -34,12 +39,14 @@ def runfolder(request, config):
     runfolder = Path(monitored_dir) / "200624_A00834_0183_BHMTFYDRXX"
     (runfolder / ".arteria").mkdir(parents=True)
     (runfolder / ".arteria/state").write_text(state)
+    (runfolder / "RTAComplete.txt").touch()
+
 
     return {
         "host": "test-host",
         "link": "http://test-host/api/1.0/runfolders/path/200624_A00834_0183_BHMTFYDRXX",
         "metadata": {
-                "reagent_kit_barcode": "MS6728155 - 600V3",
+            "reagent_kit_barcode": "MS6728155-600V3",
         },
         "path": f"{config['monitored_directories'][0]}/200624_A00834_0183_BHMTFYDRXX",
         "service_version": __version__,
@@ -59,6 +66,7 @@ async def test_version(client, caplog):
     async with client.request("GET", "/version") as resp:
         assert resp.status == 200
         content = await resp.json()
+
         assert content == {"version": __version__}
         # Test logger is initialized and used
         assert 'INFO' in caplog.text
