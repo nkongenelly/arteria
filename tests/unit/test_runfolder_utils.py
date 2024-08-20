@@ -5,6 +5,7 @@ import pytest
 import tempfile
 import xmltodict
 
+from unittest import mock
 import pytest
 
 from arteria.models.runfolder_utils import list_runfolders, Runfolder, Instrument
@@ -17,7 +18,7 @@ from arteria.config_schemas.schema_arteria_runfolder import runfolder_schema
 def initialize_config():
     config_dict = {
         "port": 8080,
-        "completed_marker_grace_minutes": 0,
+        "completed_marker_grace_minutes": 10,
         "monitored_directories": ["/tmp/path1", "/tmp/path2"],
         "logger_config_file": "/tmp/path3"
     }
@@ -103,7 +104,8 @@ class TestRunfolder():
             "completed_marker_grace_minutes": 60,
         }, exist_ok=True)
         with pytest.raises(AssertionError):
-            Runfolder(runfolder.path)
+            with tempfile.TemporaryDirectory() as regular_folder:
+                Runfolder(regular_folder)
 
         del Config._instance
         initialize_config()

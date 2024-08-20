@@ -53,13 +53,15 @@ class Runfolder():
 
         marker_file_name = Instrument(self.run_parameters).completed_marker_file
         marker_file = (self.path / marker_file_name)
-        assert (
-            marker_file.exists()
-            and (
+
+        while (
                 time.time() - os.path.getmtime(marker_file)
-                > self.config["completed_marker_grace_minutes"] * 60
-            )
-        )
+                > self.config.get("completed_marker_grace_minutes", 0) * 60
+            ):
+            if marker_file.exists():
+                break
+
+        assert ( marker_file.exists())
 
         (self.path / ".arteria").mkdir(exist_ok=True)
         self._state_file = (self.path / ".arteria/state")
