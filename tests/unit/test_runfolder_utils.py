@@ -1,12 +1,14 @@
+from pathlib import Path
 import os
 import shutil
-import pytest
 import tempfile
 import xmltodict
 
-from pathlib import Path
-from arteria.models.state import State
+import pytest
+
 from arteria.models.runfolder_utils import list_runfolders, Runfolder, Instrument
+from arteria.models.state import State
+from arteria.models.config import Config
 
 
 @pytest.fixture()
@@ -35,19 +37,18 @@ def monitored_directory():
 def runfolder(request):
     with tempfile.TemporaryDirectory(suffix="RUNFOLDER") as runfolder_path:
         runfolder_path = Path(runfolder_path)
-        complete_marker_file = 'CopyComplete.txt'
+
+        (runfolder_path / "CopyComplete.txt").touch()
+        (runfolder_path / "RTAComplete.txt").touch()
 
         (runfolder_path / ".arteria").mkdir()
         (runfolder_path / ".arteria/state").write_text(State.STARTED.value)
 
-        if hasattr(request, "param"):
-            run_parameters_file = request.param
-            if request.param == "RunParameters_MiSeq.xml":
-                complete_marker_file ='RTAComplete.txt'
-        else:
-            run_parameters_file = "RunParameters_NSXp.xml"
-
-        (runfolder_path / complete_marker_file).touch()
+        run_parameters_file = (
+            request.param
+            if hasattr(request, "param") else
+            "RunParameters_NSXp.xml"
+        )
         shutil.copyfile(
             f"tests/resources/{run_parameters_file}",
             Path(runfolder_path) / "RunParameters.xml",
@@ -84,8 +85,14 @@ class TestRunfolder():
                 Runfolder(regular_folder)
 
     def test_init_young_runfolder(self, runfolder):
-        with pytest.raises(AssertionError):
-            Runfolder(runfolder.path, grace_minutes=60)
+        Config.new({
+            "completed_marker_grace_minutes": 60,
+        })
+        try:
+            with pytest.raises(AssertionError):
+                Runfolder(runfolder.path)
+        finally:
+            Config.clear()
 
     def test_get_state(self, runfolder):
         assert runfolder.state == State.STARTED

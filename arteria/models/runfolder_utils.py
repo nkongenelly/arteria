@@ -6,8 +6,13 @@ import xmltodict
 
 from pathlib import Path
 from arteria.models.state import State
+from arteria.models.config import Config
 
 log = logging.getLogger(__name__)
+
+DEFAULT_CONFIG = {
+    "completed_marker_grace_minutes": 0,
+}
 
 
 def list_runfolders(monitored_directories, filter_key=lambda r: True):
@@ -30,7 +35,11 @@ def list_runfolders(monitored_directories, filter_key=lambda r: True):
     return runfolders
 
 class Runfolder():
-    def __init__(self, path, grace_minutes=0):
+    """
+    A class to manipulate runfolders on disk
+    """
+    def __init__(self, path):
+        self.config = Config(DEFAULT_CONFIG)
         self.path = Path(path)
         assert self.path.is_dir()
         try:
@@ -43,14 +52,17 @@ class Runfolder():
                 if path.exists()
             )
             self.run_parameters = xmltodict.parse(run_parameter_file.read_text())["RunParameters"]
-        except StopIteration as e:
-            raise AssertionError(f"File [Rr]unParameters.xml not found in runfolder {path}")
+        except StopIteration as exc:
+            raise AssertionError(f"File [Rr]unParameters.xml not found in runfolder {path}") from exc
 
         marker_file_name = Instrument(self.run_parameters).completed_marker_file
         marker_file = (self.path / marker_file_name)
         assert (
-                marker_file.exists()
-                and time.time() - os.path.getmtime(marker_file) > grace_minutes * 60
+            marker_file.exists()
+            and (
+                time.time() - os.path.getmtime(marker_file)
+                > self.config["completed_marker_grace_minutes"] * 60
+            )
         )
 
         (self.path / ".arteria").mkdir(exist_ok=True)
@@ -69,6 +81,14 @@ class Runfolder():
 
     @property
     def metadata(self):
+        """
+        Extract metadata from the runparameter file
+
+        Returns
+        -------
+            metadata: a dict containing up to two keys: "reagent_kit_barcode"
+            and "library_tube_barcode"
+        """
         if not self.run_parameters:
             log.warning(f"No metadata found for runfolder {self.path}")
 
