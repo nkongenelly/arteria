@@ -1,4 +1,3 @@
-from pathlib import Path
 import os
 import shutil
 import tempfile
@@ -11,8 +10,6 @@ from aiohttp.web_exceptions import HTTPNotFound
 from arteria.models.state import State
 from arteria.models.config import Config
 from arteria.models.runfolder_utils import list_runfolders, Runfolder, Instrument
-from arteria.models.state import State
-from arteria.models.config import Config
 
 
 @pytest.fixture()

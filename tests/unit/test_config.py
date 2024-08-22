@@ -1,8 +1,4 @@
-import tempfile
-
-import yaml
 import pytest
-import jsonschema
 from jsonschema.exceptions import ValidationError
 
 from arteria.models.config import Config
