@@ -19,12 +19,11 @@ def config():
         config_dict = {
             "monitored_directories": [monitored_dir],
             "port": 8080,
-            "completed_marker_grace_minutes": 10,
+            "completed_marker_grace_minutes": 0,
             "logger_config_file": "tests/resources/config/logger.config"
         }
 
-        yield Config.new(config_dict)
-        del Config._instance
+        yield config_dict
 
 
 @pytest.fixture()

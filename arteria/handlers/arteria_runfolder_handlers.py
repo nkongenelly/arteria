@@ -6,10 +6,11 @@ from arteria.models.config import Config
 from arteria.handlers.base import base_routes
 from arteria.models.runfolder_utils import Runfolder, list_runfolders
 
-arteria_runfolder_routes = web.RouteTableDef()
+
+routes = base_routes
 
 
-@arteria_runfolder_routes.post("/runfolders/path/{runfolder}")
+@routes.post("/runfolders/path/{runfolder}")
 async def post_runfolders(request):
     """
     When this is called with payload {"state": "STARTED"},
@@ -24,7 +25,7 @@ async def post_runfolders(request):
     return web.json_response(status=200)
 
 
-@arteria_runfolder_routes.get("/runfolders/path/{runfolder}")
+@routes.get("/runfolders/path/{runfolder}")
 async def get_runfolders(request):
     """
     Returns some information about the runfolder as json
@@ -38,14 +39,14 @@ async def get_runfolders(request):
     )
 
 
-@arteria_runfolder_routes.get("/runfolders/next")
+@routes.get("/runfolders/next")
 async def get_next_runfolder(request):
     """
     Finds unprocessed runfolder (state=ready) and then
     returns some information about this runfolder.
     """
     runfolder_cls = list_runfolders(
-        Config().config_dict.get('monitored_directories'),
+        Config()['monitored_directories'],
         filter_key=lambda r: r.state == State.READY,
         request=request
     )
@@ -62,13 +63,13 @@ async def get_next_runfolder(request):
         )
 
 
-@arteria_runfolder_routes.get("/runfolders/pickup")
+@routes.get("/runfolders/pickup")
 async def get_pickup_runfolder(request):
     """
     Used to start processing runfolders and also sets the runfolder to PENDING state.
     """
     runfolder_cls = list_runfolders(
-        Config().config_dict.get('monitored_directories'),
+        Config()['monitored_directories'],
         filter_key=lambda r: r.state == State.READY,
         request=request
     )
@@ -86,7 +87,7 @@ async def get_pickup_runfolder(request):
         )
 
 
-@arteria_runfolder_routes.get("/runfolders")
+@routes.get("/runfolders")
 async def get_all_runfolders(request):
     """
     Returns information about all the runfolders that
@@ -94,7 +95,7 @@ async def get_all_runfolders(request):
     is not specified)
     """
     runfolders = list_runfolders(
-        Config().config_dict.get('monitored_directories'),
+        Config()['monitored_directories'],
         filter_key=lambda r: r.state == State.READY,
         request=request
     )
@@ -113,7 +114,7 @@ def get_runfolders_path_from_query(request):
     Returns directory of the runfolder
     """
     return os.path.join(
-        Path(Config().config_dict.get('monitored_directories')[0]),
+        Path(Config()['monitored_directories'][0]),
         request.match_info['runfolder']
     )
 
@@ -127,6 +128,3 @@ def serialize_runfolder_path(runfolder_cls):
     runfolder_dict['path'] = Path(runfolder_dict['path']).as_uri()
 
     return runfolder_dict
-
-
-routes = [base_routes, arteria_runfolder_routes]
