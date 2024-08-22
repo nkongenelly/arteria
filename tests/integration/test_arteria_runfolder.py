@@ -1,14 +1,13 @@
 import shutil
 import tempfile
-
 from pathlib import Path
+
 import pytest
 
 from arteria import __version__
 from arteria.models.state import State
 from arteria.models.config import Config
 from arteria.services.arteria_runfolder import get_app
-from arteria.config_schemas.schema_arteria_runfolder import runfolder_schema
 
 
 @pytest.fixture()
@@ -20,11 +19,11 @@ def config():
         config_dict = {
             "monitored_directories": [monitored_dir],
             "port": 8080,
-            "completed_marker_grace_minutes": 0,
+            "completed_marker_grace_minutes": 10,
             "logger_config_file": "tests/resources/config/logger.config"
         }
 
-        yield Config.new(config_dict, exist_ok=False, schema=runfolder_schema)
+        yield Config.new(config_dict)
         del Config._instance
 
 
@@ -62,7 +61,10 @@ async def client(aiohttp_client, config):
     """
     Instantiate a web client with a specific config.
     """
-    return await aiohttp_client(get_app(config))
+    try:
+        yield await aiohttp_client(get_app(config))
+    finally:
+        Config.clear()
 
 
 def get_expected_runfolder(runfolder, resp, state=None):
@@ -78,11 +80,11 @@ async def test_version(client, caplog):
     async with client.request("GET", "/version") as resp:
         assert resp.status == 200
         content = await resp.json()
+        assert content == {"version": __version__}
 
-    assert content == {"version": __version__}
-    # Test logger is initialized and used
-    assert 'INFO' in caplog.text
-    assert 'GET /version' in caplog.text
+        # Test logger is initialized and used
+        assert 'INFO' in caplog.text
+        assert 'GET /version' in caplog.text
 
 
 @pytest.mark.parametrize("runfolder", [{"state": State.READY.name}], indirect=True)

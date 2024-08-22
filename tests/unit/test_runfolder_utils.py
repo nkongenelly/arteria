@@ -1,3 +1,4 @@
+from pathlib import Path
 import os
 import shutil
 import tempfile
@@ -10,6 +11,8 @@ from aiohttp.web_exceptions import HTTPNotFound
 from arteria.models.state import State
 from arteria.models.config import Config
 from arteria.models.runfolder_utils import list_runfolders, Runfolder, Instrument
+from arteria.models.state import State
+from arteria.models.config import Config
 
 
 @pytest.fixture()
@@ -38,6 +41,7 @@ def monitored_directory():
 def runfolder(request):
     with tempfile.TemporaryDirectory(suffix="RUNFOLDER") as runfolder_path:
         runfolder_path = Path(runfolder_path)
+
         complete_marker_file = 'CopyComplete.txt'
 
         (runfolder_path / ".arteria").mkdir()
@@ -91,10 +95,11 @@ class TestRunfolder():
         Config.new({
             "completed_marker_grace_minutes": 60,
         })
-        with pytest.raises(AssertionError):
-            Runfolder(runfolder.path)
-
-        del Config._instance
+        try:
+            with pytest.raises(AssertionError):
+                Runfolder(runfolder.path)
+        finally:
+            Config.clear()
 
     def test_get_state(self, runfolder):
         assert runfolder.state == State.STARTED
@@ -119,7 +124,6 @@ class TestRunfolder():
         assert runfolder.metadata == metadata
 
 
-# class TestInstrument(object) :
 @pytest.mark.parametrize(
     "runparameter_file,marker_file",
     [
