@@ -1,1 +1,4 @@
-*.xml	binary
+* text=auto
+
+poetry.lock text -diff
+*.xml text -diff
