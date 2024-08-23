@@ -4,7 +4,6 @@ import time
 import logging
 import xmltodict
 
-from aiohttp import web
 from pathlib import Path
 from arteria import __version__
 from arteria.models.state import State
@@ -17,7 +16,7 @@ DEFAULT_CONFIG = {
 }
 
 
-def list_runfolders(monitored_directories, filter_key=lambda r: True, request=None):
+def list_runfolders(monitored_directories, filter_key=lambda r: True):
     """
     Returns list of Runfolders in the monitored_directories
     according to the state filter provided (filter_key), or all
@@ -28,9 +27,9 @@ def list_runfolders(monitored_directories, filter_key=lambda r: True, request=No
         monitored_dir_path = Path(monitored_directory)
         for subdir in monitored_dir_path.iterdir():
             try:
-                if filter_key(runfolder := Runfolder(monitored_dir_path / subdir, request)):
+                if filter_key(runfolder := Runfolder(monitored_dir_path / subdir)):
                     runfolders.append(runfolder)
-            except web.HTTPNotFound as e:
+            except AssertionError as e:
                 if e == f"File [Rr]unParameters.xml not found in runfolder {subdir}":
                     continue
 
@@ -41,19 +40,13 @@ class Runfolder():
     """
     A class to manipulate runfolders on disk
     """
-    def __init__(self, path, request=None):
+    def __init__(self, path):
         self.config = Config(DEFAULT_CONFIG)
         self.path = Path(path)
 
         runfolder_name = os.path.basename(self.path)
         if not self.path.is_dir():
-            raise web.HTTPNotFound(
-                reason=f"Runfolder '{runfolder_name}' does not exist"
-            )
-        if request:
-            self.host = request.url.raw_host
-            link = f"{request.scheme}://{self.host}/api/1.0"
-            self.link = f"{link}{request.path}"
+            raise AssertionError(f"Runfolder '{runfolder_name}' does not exist")
 
         try:
             run_parameter_file = next(
@@ -66,8 +59,8 @@ class Runfolder():
             )
             self.run_parameters = xmltodict.parse(run_parameter_file.read_text())["RunParameters"]
         except StopIteration as exc:
-            raise web.HTTPNotFound(
-                reason=f"File [Rr]unParameters.xml not found in runfolder {path}"
+            raise AssertionError(
+                f"File [Rr]unParameters.xml not found in runfolder {path}"
             ) from exc
 
         marker_file_name = Instrument(self.run_parameters).completed_marker_file
@@ -92,9 +85,8 @@ class Runfolder():
 
     @state.setter
     def state(self, new_state):
-        if new_state not in State.__members__:
-            raise web.HTTPBadRequest(reason=f"The state '{new_state}' is not valid")
-        self._state_file.write_text(State[new_state].value)
+        assert new_state in State
+        self._state_file.write_text(new_state.value)
 
     @property
     def metadata(self):
@@ -133,14 +125,15 @@ class Runfolder():
 
         return metadata
 
-    def __repr__(self):
+    def __setitem__(self, key, value):
+        return setattr(self, key, value)
+
+    def to_dict(self):
         return {
-            "host": self.host if hasattr(self, 'host') else '',
-            "link": self.link if hasattr(self, 'link') else '',
             "metadata": self.metadata,
             "path": self.path,
             "service_version": __version__,
-            "state": self.state.name,
+            "state": self.state.name
         }
 
 

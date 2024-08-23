@@ -15,7 +15,7 @@ def config():
     """
     Setup a temporary directory to be monitored by the service.
     """
-    with tempfile.TemporaryDirectory(delete=False) as monitored_dir:
+    with tempfile.TemporaryDirectory() as monitored_dir:
         config_dict = {
             "monitored_directories": [monitored_dir],
             "port": 8080,
@@ -124,9 +124,9 @@ async def test_get_runfolder_path(client, config, runfolder):
         assert resp.status == 200
         expected_runfolder = get_expected_runfolder(runfolder, resp)
         content = await resp.json()
-        content['path'] = expected_runfolder.get("path")
+        content[0]['path'] = expected_runfolder.get("path")
 
-        assert content == expected_runfolder
+        assert content == [expected_runfolder]
 
 
 @pytest.mark.parametrize("runfolder", [{"state": State.READY.name}], indirect=True)

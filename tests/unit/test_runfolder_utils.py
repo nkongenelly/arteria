@@ -6,7 +6,6 @@ from pathlib import Path
 import xmltodict
 import pytest
 
-from aiohttp.web_exceptions import HTTPNotFound
 from arteria.models.state import State
 from arteria.models.config import Config
 from arteria.models.runfolder_utils import list_runfolders, Runfolder, Instrument
@@ -84,7 +83,7 @@ def test_list_runfolders_filtered(monitored_directory):
 
 class TestRunfolder():
     def test_init_regular_folder(self):
-        with pytest.raises(HTTPNotFound):
+        with pytest.raises(AssertionError):
             with tempfile.TemporaryDirectory() as regular_folder:
                 Runfolder(regular_folder)
 
@@ -102,7 +101,7 @@ class TestRunfolder():
         assert runfolder.state == State.STARTED
 
     def test_set_state(self, runfolder):
-        runfolder.state = State.DONE.name
+        runfolder.state = State.DONE
         assert runfolder.state == State.DONE
 
     def get_path(self, runfolder):
