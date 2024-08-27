@@ -15,9 +15,12 @@ def config():
     """
     Setup a temporary directory to be monitored by the service.
     """
-    with tempfile.TemporaryDirectory() as monitored_dir:
+    with (
+            tempfile.TemporaryDirectory() as monitored_dir1,
+            tempfile.TemporaryDirectory() as monitored_dir2,
+    ):
         config_dict = {
-            "monitored_directories": [monitored_dir],
+            "monitored_directories": [monitored_dir1, monitored_dir2],
             "port": 8080,
             "completed_marker_grace_minutes": 0,
             "logger_config_file": "tests/resources/config/logger.config"
@@ -33,7 +36,7 @@ def runfolder(request, config):
     """
     state = request.param.get("state", State.DONE.value)
 
-    monitored_dir = config["monitored_directories"][0]
+    monitored_dir = config["monitored_directories"][1]
     runfolder = Path(monitored_dir) / "200624_A00834_0183_BHMTFYDRXX"
     (runfolder / ".arteria").mkdir(parents=True)
     (runfolder / ".arteria/state").write_text(state)
