@@ -68,7 +68,7 @@ async def client(aiohttp_client, config):
 
 def get_expected_runfolder(runfolder, resp, state=None):
     runfolder['host'] = resp.url.raw_host
-    runfolder['link'] = f"{resp.url.scheme}://{resp.url.raw_host}/api/1.0{resp.url.raw_path}"
+    runfolder['link'] = f"{resp.url.scheme}://{resp.url.raw_host}/api/1.0/runfolders/path{runfolder["path"]}"
     runfolder['state'] = state if state else runfolder['state']
     runfolder['path'] = runfolder['path'].as_uri()
 
