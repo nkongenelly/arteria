@@ -31,7 +31,7 @@ def list_runfolders(monitored_directories, filter_key=lambda r: True):
             if (
                     e.args[0]
                     == (
-                        "File [Rr]unParameters.xml not found in runfolder"
+                        "File [Rr]unParameters.xml not found in runfolder "
                         f"{monitored_runfolders_path}"
                     )
             ):
