@@ -61,13 +61,23 @@ def runfolder(request):
 
 def test_list_runfolders(monitored_directory):
     assert len(os.listdir(monitored_directory)) == 4
+
     runfolders = list_runfolders([monitored_directory])
 
     assert len(runfolders) == 3
+
     assert all(
         Path(runfolder.path) == Path(f"{monitored_directory}/runfolder{i}")
         for i, runfolder in enumerate(sorted(runfolders, key=lambda r: r.path))
+        if runfolder != "regular_folder"
     )
+
+
+def test_list_runfolders_empty_monitored_dir():
+    with tempfile.TemporaryDirectory() as monitored_dir:
+        runfolders = list_runfolders([monitored_dir])
+
+        assert len(runfolders) == 0
 
 
 def test_list_runfolders_filtered(monitored_directory):
@@ -85,7 +95,7 @@ class TestRunfolder():
     def test_init_regular_folder(self):
         with pytest.raises(AssertionError):
             with tempfile.TemporaryDirectory() as regular_folder:
-                Runfolder(regular_folder)
+                Runfolder(Path(regular_folder))
 
     def test_init_young_runfolder(self, runfolder):
         Config.new({

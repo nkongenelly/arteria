@@ -5,7 +5,6 @@ import logging
 import xmltodict
 
 from pathlib import Path
-from arteria import __version__
 from arteria.models.state import State
 from arteria.models.config import Config
 
@@ -23,30 +22,50 @@ def list_runfolders(monitored_directories, filter_key=lambda r: True):
     runfolders when no state filter is given.
     """
     runfolders = []
-    for monitored_directory in monitored_directories:
-        monitored_dir_path = Path(monitored_directory)
-        for subdir in monitored_dir_path.iterdir():
-            try:
-                if filter_key(runfolder := Runfolder(monitored_dir_path / subdir)):
-                    runfolders.append(runfolder)
-            except AssertionError as e:
-                if e == f"File [Rr]unParameters.xml not found in runfolder {subdir}":
-                    continue
+    monitored_runfolders_paths = get_monitored_path_files(monitored_directories)
+    for monitored_runfolders_path in monitored_runfolders_paths:
+        try:
+            if filter_key(runfolder := Runfolder(monitored_runfolders_path)):
+                runfolders.append(runfolder)
+        except AssertionError as e:
+            if (
+                    e.args[0]
+                    == (
+                        "File [Rr]unParameters.xml not found in runfolder"
+                        f"{monitored_runfolders_path}"
+                    )
+            ):
+                continue
+            else:
+                raise e
 
     return runfolders
+
+
+def get_monitored_path_files(monitored_directories):
+    return [
+        Path(monitored_directory) / subdir
+        for monitored_directory in monitored_directories
+        for subdir in Path(monitored_directory).iterdir()
+    ]
 
 
 class Runfolder():
     """
     A class to manipulate runfolders on disk
     """
-    def __init__(self, path):
+    def __init__(self, path, runfolder_name=None):
         self.config = Config(DEFAULT_CONFIG)
-        self.path = Path(path)
 
-        runfolder_name = os.path.basename(self.path)
-        if not self.path.is_dir():
-            raise AssertionError(f"Runfolder '{runfolder_name}' does not exist")
+        # If specific runfolder_name has been provided in request.
+        if runfolder_name:
+            runfolder_name = runfolder_name
+            path = Path(path).parent / runfolder_name
+        else:
+            runfolder_name = Path(path).name
+        self.path = path
+
+        assert self.path.is_dir(), f"Runfolder '{runfolder_name}' does not exist"
 
         try:
             run_parameter_file = next(
@@ -125,14 +144,10 @@ class Runfolder():
 
         return metadata
 
-    def __setitem__(self, key, value):
-        return setattr(self, key, value)
-
     def to_dict(self):
         return {
             "metadata": self.metadata,
             "path": self.path,
-            "service_version": __version__,
             "state": self.state.name
         }
 
