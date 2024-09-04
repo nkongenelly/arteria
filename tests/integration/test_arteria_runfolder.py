@@ -18,9 +18,14 @@ def config():
     with (
             tempfile.TemporaryDirectory() as monitored_dir1,
             tempfile.TemporaryDirectory() as monitored_dir2,
+            tempfile.TemporaryDirectory() as monitored_dir3,
     ):
         config_dict = {
-            "monitored_directories": [monitored_dir1, monitored_dir2],
+            "monitored_directories": [
+                monitored_dir1,
+                monitored_dir2,
+                monitored_dir3
+            ],
             "port": 8080,
             "completed_marker_grace_minutes": 0,
             "logger_config_file": "tests/resources/config/logger.config"
@@ -32,18 +37,25 @@ def config():
 @pytest.fixture()
 def runfolder(request, config):
     """
-    Create a dummy runfolder in the first monitored directory.
+    Create a dummy runfolder in the second monitored directory.
+
+    This also creates a copy of that runfolder in the first monitored directory
+    as a control. This runfolder should not be modified during the tests.
     """
     state = request.param.get("state", State.DONE.value)
-    monitored_dir = config["monitored_directories"][1]
-    runfolder = Path(monitored_dir) / "200624_A00834_0183_BHMTFYDRXX"
-    (runfolder / ".arteria").mkdir(parents=True)
-    (runfolder / ".arteria/state").write_text(state)
-    (runfolder / "RTAComplete.txt").touch()
-    shutil.copyfile(
-        "tests/resources/RunParameters_MiSeq.xml",
-        runfolder / "RunParameters.xml",
-    )
+
+    for i, monitored_dir in enumerate(config["monitored_directories"][:2]):
+        runfolder = Path(monitored_dir) / "200624_A00834_0183_BHMTFYDRXX"
+        (runfolder / ".arteria").mkdir(parents=True)
+        if i:
+            (runfolder / ".arteria/state").write_text(state)
+        else:
+            (runfolder / ".arteria/state").write_text(State.DONE.value)
+        (runfolder / "RTAComplete.txt").touch()
+        shutil.copyfile(
+            "tests/resources/RunParameters_MiSeq.xml",
+            runfolder / "RunParameters.xml",
+        )
 
     return {
         "host": "test-host",
@@ -104,6 +116,13 @@ async def test_post_runfolders_path(client, config, runfolder):
         state = runfolder.get('path') / ".arteria/state"
         assert state.read_text() == State.STARTED.value
 
+        state_control = (
+            Path(config["monitored_directories"][0])
+            / runfolder['path'].name
+            / ".arteria/state"
+        )
+        assert state_control.read_text() == State.DONE.value
+
 
 @pytest.mark.parametrize("runfolder", [{"state": State.READY.name}], indirect=True)
 async def test_post_runfolders_path_invalid_state(client, config, runfolder):
@@ -134,6 +153,16 @@ async def test_post_runfolders_path_missing_runfolder(client, config, runfolder)
 
 
 @pytest.mark.parametrize("runfolder", [{"state": State.READY.name}], indirect=True)
+async def test_post_runfolder_unmonitored_dir(client, config, runfolder):
+    runfolder_name = runfolder["path"].name
+    async with client.request(
+        "POST", f"/runfolders/path/tmp/unmonitored_path/{runfolder_name}",
+        data={"state": "STARTED"},
+    ) as resp:
+        assert resp.status == 404
+
+
+@pytest.mark.parametrize("runfolder", [{"state": State.READY.name}], indirect=True)
 async def test_get_runfolder_path(client, config, runfolder):
     async with client.request("GET", f"/runfolders/path/{runfolder['path']}") as resp:
         assert resp.status == 200
@@ -148,6 +177,15 @@ async def test_get_runfolder_path(client, config, runfolder):
         )
 
         assert content == expected_runfolder
+
+
+@pytest.mark.parametrize("runfolder", [{"state": State.READY.name}], indirect=True)
+async def test_get_runfolder_unmonitored_dir(client, config, runfolder):
+    runfolder_name = runfolder["path"].name
+    async with client.request(
+        "GET", f"/runfolders/path/tmp/unmonitored_path/{runfolder_name}"
+    ) as resp:
+        assert resp.status == 404
 
 
 @pytest.mark.parametrize("runfolder", [{"state": State.READY.name}], indirect=True)
