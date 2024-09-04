@@ -85,7 +85,7 @@ def get_expected_runfolder(runfolder, resp, state=None):
     runfolder['host'] = resp.url.raw_host
     runfolder['link'] = (
             f"{resp.url.scheme}://{resp.url.raw_host}"
-            f"/api/1.0{resp.url.path}{runfolder["path"]}"
+            f"/api/1.0/runfolder/path{runfolder["path"]}"
         )
     runfolder['state'] = state if state else runfolder['state']
     runfolder['path'] = runfolder['path'].as_uri()
