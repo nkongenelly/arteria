@@ -5,7 +5,7 @@ import logging
 from arteria.models.state import State
 from arteria.models.config import Config
 from arteria.handlers.base import base_routes
-from arteria.models.runfolder_utils import Runfolder, list_runfolders, get_monitored_path_files
+from arteria.models.runfolder_utils import Runfolder, list_runfolders
 
 
 routes = base_routes
@@ -20,24 +20,28 @@ async def post_runfolders(request):
     """
 
     data = await request.post()
+    runfolder_path = Path(request.match_info['runfolder'])
+
+    if not any([
+        runfolder_path.parent == Path(monitored_directory)
+        for monitored_directory in Config()['monitored_directories']
+    ]):
+        raise web.HTTPBadRequest(
+            reason=f"{runfolder_path} does not belong to a monitored directory")
+
     try:
-        runfolder_name = "".join(
-            request.match_info['runfolder'].split("/")[-1]
-        )
-
-        monitored_runfolders_paths = get_monitored_path_files(Config()['monitored_directories'])
-        for monitored_runfolders_path in monitored_runfolders_paths:
-            runfolder = Runfolder(monitored_runfolders_path, runfolder_name)
-            state = data["state"]
-            try:
-                runfolder.state = State[state]
-            except KeyError as exc:
-                raise web.HTTPBadRequest(reason=f"The state '{state}' is not valid") from exc
-
-        return web.json_response(status=200)
+        runfolder = Runfolder(runfolder_path)
     except AssertionError as exc:
         log.exception(exc)
         raise web.HTTPNotFound(reason=exc) from exc
+
+    state = data["state"]
+    try:
+        runfolder.state = State[state]
+    except KeyError as exc:
+        raise web.HTTPBadRequest(reason=f"The state '{state}' is not valid") from exc
+
+    return web.Response(status=200)
 
 
 @routes.get("/runfolders/path/{runfolder:.*}")
@@ -45,25 +49,25 @@ async def get_runfolders(request):
     """
     Returns some information about the runfolder as json
     """
+    runfolder_path = Path(request.match_info['runfolder'])
+
+    if not any([
+        runfolder_path.parent == Path(monitored_directory)
+        for monitored_directory in Config()['monitored_directories']
+    ]):
+        raise web.HTTPBadRequest(
+            reason=f"{runfolder_path} does not belong to a monitored directory")
+
     try:
-        runfolder_name = "".join(
-            request.match_info['runfolder'].split("/")[-1]
-        )
-
-        monitored_runfolders_paths = get_monitored_path_files(Config()['monitored_directories'])
-
-        runfolder = [
-            serialize_runfolder_path(Runfolder(monitored_runfolders_path, runfolder_name), request)
-            for monitored_runfolders_path in monitored_runfolders_paths
-        ][0]
-
-        return web.json_response(
-            data=runfolder,
-            status=200
-        )
+        runfolder = Runfolder(runfolder_path)
     except AssertionError as exc:
         log.exception(exc)
         raise web.HTTPNotFound(reason=exc) from exc
+
+    return web.json_response(
+        data=serialize_runfolder_path(runfolder, request),
+        status=200
+    )
 
 
 @routes.get("/runfolders/next")
@@ -150,16 +154,9 @@ async def get_all_runfolders(request):
 
 def get_host_link(request, runfolder_path, ):
     host = request.url.raw_host
-    link = f"{request.scheme}://{host}/api/1.0"
-    request_url = (
-            f'/{("/").join(request.url.parts[1:3])}'
-            if "runfolder" in request.match_info
-            else request.url.path
-        )
+    link = f"{request.scheme}://{host}/api/1.0/runfolders/path{runfolder_path}"
 
-    link_path = f"{link}{request_url}{runfolder_path}"
-
-    return host, link_path
+    return host, link
 
 
 def serialize_runfolder_path(runfolder_cls, request):

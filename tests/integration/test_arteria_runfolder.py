@@ -60,7 +60,7 @@ def runfolder(request, config):
     return {
         "host": "test-host",
         "link": "http://test-host/api/1.0/runfolders/path"
-                f"{monitored_dir}/200624_A00834_0183_BHMTFYDRXX",
+                f"{config['monitored_directories'][1]}/200624_A00834_0183_BHMTFYDRXX",
         "metadata": {
             "reagent_kit_barcode": "MS6728155-600V3",
             },
@@ -85,7 +85,7 @@ def get_expected_runfolder(runfolder, resp, state=None):
     runfolder['host'] = resp.url.raw_host
     runfolder['link'] = (
             f"{resp.url.scheme}://{resp.url.raw_host}"
-            f"/api/1.0/runfolder/path{runfolder["path"]}"
+            f"/api/1.0/runfolders/path{runfolder["path"]}"
         )
     runfolder['state'] = state if state else runfolder['state']
     runfolder['path'] = runfolder['path'].as_uri()
@@ -159,7 +159,7 @@ async def test_post_runfolder_unmonitored_dir(client, config, runfolder):
         "POST", f"/runfolders/path/tmp/unmonitored_path/{runfolder_name}",
         data={"state": "STARTED"},
     ) as resp:
-        assert resp.status == 404
+        assert resp.status == 400
 
 
 @pytest.mark.parametrize("runfolder", [{"state": State.READY.name}], indirect=True)
@@ -169,12 +169,6 @@ async def test_get_runfolder_path(client, config, runfolder):
         expected_runfolder = get_expected_runfolder(runfolder, resp)
         content = await resp.json()
         content['path'] = expected_runfolder.get("path")
-        request_url = ("/").join(resp.url.parts[1:3])
-        path = Path(config['monitored_directories'][1]) / "200624_A00834_0183_BHMTFYDRXX"
-        expected_runfolder['link'] = (
-            f"{resp.url.scheme}://"
-            f"{resp.url.raw_host}/api/1.0/{request_url}{path}"
-        )
 
         assert content == expected_runfolder
 
@@ -185,7 +179,7 @@ async def test_get_runfolder_unmonitored_dir(client, config, runfolder):
     async with client.request(
         "GET", f"/runfolders/path/tmp/unmonitored_path/{runfolder_name}"
     ) as resp:
-        assert resp.status == 404
+        assert resp.status == 400
 
 
 @pytest.mark.parametrize("runfolder", [{"state": State.READY.name}], indirect=True)

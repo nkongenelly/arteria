@@ -22,27 +22,24 @@ def list_runfolders(monitored_directories, filter_key=lambda r: True):
     runfolders when no state filter is given.
     """
     runfolders = []
-    monitored_runfolders_paths = get_monitored_path_files(monitored_directories)
+    monitored_runfolders_paths = get_monitored_subdirs(monitored_directories)
     for monitored_runfolders_path in monitored_runfolders_paths:
         try:
             if filter_key(runfolder := Runfolder(monitored_runfolders_path)):
                 runfolders.append(runfolder)
         except AssertionError as e:
             if (
-                    e.args[0]
-                    == (
-                        "File [Rr]unParameters.xml not found in runfolder "
-                        f"{monitored_runfolders_path}"
-                    )
+                str(e) != (
+                    "File [Rr]unParameters.xml not found in runfolder "
+                    f"{monitored_runfolders_path}"
+                )
             ):
-                continue
-            else:
-                raise e
+                raise
 
     return runfolders
 
 
-def get_monitored_path_files(monitored_directories):
+def get_monitored_subdirs(monitored_directories):
     return [
         Path(monitored_directory) / subdir
         for monitored_directory in monitored_directories
@@ -54,18 +51,11 @@ class Runfolder():
     """
     A class to manipulate runfolders on disk
     """
-    def __init__(self, path, runfolder_name=None):
+    def __init__(self, path):
         self.config = Config(DEFAULT_CONFIG)
-
-        # If specific runfolder_name has been provided in request.
-        if runfolder_name:
-            runfolder_name = runfolder_name
-            path = Path(path).parent / runfolder_name
-        else:
-            runfolder_name = Path(path).name
         self.path = path
 
-        assert self.path.is_dir(), f"Runfolder '{runfolder_name}' does not exist"
+        assert self.path.is_dir(), f"Runfolder '{path.name}' does not exist"
 
         try:
             run_parameter_file = next(
